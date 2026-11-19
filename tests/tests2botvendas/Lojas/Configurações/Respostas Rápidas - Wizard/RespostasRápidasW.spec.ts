@@ -200,3 +200,5 @@ test('CT06', async ({ page }) => {
     await page.locator('tr:nth-child(7) > td:nth-child(4) > .table-actions > form > .btn').click();
     await page.getByRole('button', { name: 'Sim, remover' }).click();
 });
+git config --global user.email "kaduemanuel7@gmail.com"
+git config --global user.name "kaduem"
