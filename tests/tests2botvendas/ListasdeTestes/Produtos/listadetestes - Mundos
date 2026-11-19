@@ -1,0 +1,109 @@
+Plano completo de casos de teste estruturado sob a perspetiva de QA para o ecrã de **Produtos > Grupo de opções > Editar**:
+
+---
+
+### 1. Dados Gerais e Cabeçalho do Grupo de Opções
+
+* **CT01 - Edição do campo "Nome" com sucesso:** Alterar o texto no campo "Nome" (ex.: de "teste" para outro valor válido), clicar em "Salvar" e validar se a alteração persiste na base de dados.
+
+
+* **CT02 - Validação de campo "Nome" vazio:** Limpar o conteúdo do campo "Nome", tentar submeter clicando em "Salvar" e confirmar se o sistema impede a gravação através de alerta ou aviso de campo obrigatório.
+
+
+* **CT03 - Limite de carateres e sanitização no "Nome":** Inserir cadeias de texto longas, carateres especiais e scripts (`<script>alert(1)</script>`) para verificar a resistência a injeções e a integridade da interface.
+
+
+* **CT04 - Ação "Cancelar":** Modificar campos do formulário, clicar no botão "⬅ Cancelar" e validar se as alterações são descartadas e o utilizador é redirecionado para a listagem principal.
+
+
+
+---
+
+### 2. Gestão de Grupos de Perguntas (`+ Novo grupo`)
+
+* **CT05 - Adicionar novo grupo de perguntas:** Clicar no botão "+ Novo grupo" e verificar se um novo bloco/card de configuração (marcado com o badge numérico sequencial "1") é adicionado à página.
+
+
+* **CT06 - Adição múltipla de grupos de perguntas:** Clicar repetidamente em "+ Novo grupo" e validar se são criados blocos incrementais (ex.: 1, 2, 3...) de forma estável.
+
+
+* **CT07 - Edição do campo "Pergunta":** Alterar o texto predefinido ("Novo grupo") para uma pergunta real (ex.: "Qual o ponto da carne?").
+
+
+* **CT08 - Caixa de verificação "Obrigatório":** Alternar o estado da checkbox "Obrigatório" (marcado/desmarcado) e verificar o impacto na obrigatoriedade de seleção durante a compra.
+
+
+* **CT09 - Validação dos limites "Mín. de respostas" e "Máx. de respostas":**
+* Inserir valor mínimo inferior ou igual ao valor máximo (ex.: Mín: 1, Máx: 3) e guardar com sucesso.
+
+
+* Tentar definir um "Mín. de respostas" superior ao "Máx. de respostas" (ex.: Mín: 2, Máx: 1) e validar se o sistema acusa erro de validação.
+
+
+* Inserir valores nulos, negativos ou texto nos campos numéricos de resposta e verificar o tratamento.
+
+
+
+
+* **CT10 - Interruptor "Modificar quantidade (carrinho)":** Ativar e desativar o comutador e verificar se o comportamento reflete na permissão de ajuste de quantidade no carrinho de compras.
+
+
+* **CT11 - Botão de visualização/ocultação (Ícone de olho azul):** Clicar no botão azul com o ícone do olho e verificar se o bloco de opções do grupo recolhe/expande na interface.
+
+
+* **CT12 - Eliminar grupo de perguntas (Ícone do caixote do lixo vermelho):** Clicar no caixote do lixo da barra do grupo, confirmar o aviso (se existente) e validar a remoção integral do bloco e das suas respetivas opções.
+
+
+
+---
+
+### 3. Gestão de Opções / Itens de Escolha
+
+* **CT13 - Adicionar opção (Botão verde "+"):** Clicar no botão "+" no grupo de pergunta e validar se uma nova linha de opção é inserida com os campos "Padrão?", "Opção", "Valor adicional", "Quant. máxima" e botão de eliminação.
+
+
+* **CT14 - Configuração do comutador "Padrão?":**
+* Ativar o comutador numa opção e verificar se esta fica selecionada por defeito ao exibir o produto.
+
+
+* Tentar marcar múltiplas opções como padrão caso o "Máx. de respostas" seja igual a 1, validando se o sistema impede opções padrão conflitantes.
+
+
+
+
+* **CT15 - Preenchimento do texto da "Opção":** Inserir a descrição do item (ex.: "Molho Extra", "Sem Cebola") e testar validação para campo vazio.
+
+
+* **CT16 - Formatação e cálculo do "Valor adicional":**
+* Inserir valores monetários com vírgula e ponto (ex.: `5,50` ou `0,00`) e validar a formatação da máscara.
+
+
+* Tentar inserir valores negativos para validar a consistência.
+
+
+
+
+* **CT17 - Campo "Quant. máxima":**
+* Definir limites de quantidade por item (ex.: `1`, `5`) e verificar a aceitação de valores estritamente positivos.
+
+
+* Validar se a "Quant. máxima" de um item não ultrapassa a "Máx. de respostas" configurada no cabeçalho do grupo.
+
+
+
+
+* **CT18 - Eliminar opção individual (Caixote do lixo vermelho da linha):** Clicar no ícone de lixeira da linha da opção e verificar se apenas essa opção específica é removida sem afetar o grupo principal.
+
+
+
+---
+
+### 4. Regras de Negócio e Persistência
+
+* **CT19 - Gravação de grupo sem opções vinculadas:** Tentar salvar um grupo de opções que contenha uma pergunta criada, mas nenhuma opção adicionada dentro dela, conferindo se o sistema permite ou exige pelo menos uma opção.
+
+
+* **CT20 - Persistência completa:** Criar uma pergunta, adicionar duas ou mais opções com valores adicionais diferentes, clicar em "Salvar" e reabrir a página de edição para validar se todos os dados salvos permanecem idênticos.
+
+
+* **CT21 - Navegação pelo Breadcrumb:** Clicar nas ligações superiores `Produtos` ou `Grupo de opções` e assegurar que o utilizador é redirecionado para a secção pretendida.

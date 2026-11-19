@@ -1,0 +1,110 @@
+Com base nas interfaces apresentadas para a gestão de categorias de produtos ("Listagem de Categorias" e "Adicionar Categoria"), segue a lista de casos de teste recomendados:
+
+---
+
+### 1. Ecrã de Adicionar Categoria (`Produtos > Categorias > Adicionar`)
+
+#### 1.1. Upload e Gestão de Imagem
+
+* **CT01 - Upload de imagem com sucesso:** Clicar em "Colocar imagem", selecionar um ficheiro válido (JPG, PNG) dentro do tamanho permitido e verificar se a pré-visualização substitui o ícone "Imagem Indisponível".
+
+
+* **CT02 - Formato de imagem inválido:** Tentar carregar ficheiros com extensões não suportadas (PDF, TXT, EXE) e validar a mensagem de erro.
+* **CT03 - Tamanho de imagem excedido:** Tentar carregar uma imagem que ultrapasse o limite máximo permitido (ex.: > 5 MB) e verificar a validação.
+* **CT04 - Remoção/Alteração de imagem:** Verificar se é possível remover ou substituir uma imagem previamente carregada antes de guardar.
+
+#### 1.2. Campos de Texto e Validações
+
+* **CT05 - Criação com sucesso (todos os campos preenchidos):** Preencher "Nome", "Nome visível para o cliente", selecionar um "Horário", carregar imagem e clicar em "Salvar".
+
+
+* **CT06 - Criação com sucesso apenas com campos obrigatórios:** Identificar e preencher estritamente os campos mandatórios (ex.: apenas "Nome") e validar se o registo é criado com sucesso.
+
+
+* **CT07 - Validação de campo obrigatório vazio:** Tentar submeter o formulário sem preencher o campo "Nome" e validar se surge o aviso/bloqueio no ecrã.
+
+
+* **CT08 - Limite de carateres:** Testar limites mínimo e máximo (boundary value analysis) nos campos de texto "Nome" e "Nome visível para o cliente".
+
+
+* **CT09 - Carateres especiais e injeção (XSS/SQLi):** Inserir carateres especiais, emojis, espaços em branco no início/fim e scripts HTML simples (`<script>alert(1)</script>`) nos campos de texto.
+
+
+* **CT10 - Tooltip / Ajuda no campo "Horário":** Passar o cursor ou clicar no ícone de informação `(i)` ao lado de "Horário" e verificar se o texto explicativo é exibido corretamente.
+
+
+* **CT11 - Seleção de Horário:** Abrir a lista suspensa "Escolha...", selecionar um período ou regra de horário válida e confirmar que o valor fica selecionado.
+
+
+
+#### 1.3. Ações e Navegação
+
+* **CT12 - Cancelar operação:** Clicar no botão "Cancelar" e validar se as alterações são descartadas e o utilizador regressa à listagem.
+
+
+* **CT13 - Breadcrumb (Navegação):** Clicar nas hiperligações `Produtos` e `Categorias` na barra superior para verificar o redirecionamento.
+
+
+
+---
+
+### 2. Ecrã de Listagem de Categorias (`Produtos > Categorias`)
+
+#### 2.1. Exibição e Dados
+
+* **CT14 - Carregamento inicial da grelha:** Verificar se as colunas "Nome", "Nome na Loja Virtual", "Qtde de produtos", "Horário" e "Ações" são renderizadas corretamente com os dados da base de dados.
+
+
+* **CT15 - Indicador de visibilidade/estado:** Verificar se o ícone junto ao nome (ex.: olho riscado em "Absorvente") reflete o estado real da categoria (oculta/visível na loja).
+
+
+* **CT16 - Contadores de registos:** Verificar se o contador no rodapé (ex.: "1 até 23 / 100") corresponde exatamente ao número de linhas exibidas e ao total de categorias cadastradas.
+
+
+
+#### 2.2. Pesquisa e Filtros
+
+* **CT17 - Pesquisa com resultado exato:** Digitar um nome existente (ex.: "Álcool em Gel") no campo "Pesquisar" e validar se apenas os itens correspondentes surgem.
+
+
+* **CT18 - Pesquisa com correspondência parcial / Case Insensitive:** Pesquisar em minúsculas (ex.: "agua") e verificar se itens como "Água Mineral" e "Água Micelar" são filtrados.
+
+
+* **CT19 - Pesquisa sem resultados:** Inserir um termo inexistente e verificar a mensagem de "Nenhum registo encontrado".
+* **CT20 - Limpeza do campo de pesquisa:** Apagar o texto de pesquisa e verificar se a listagem original é restaurada.
+
+#### 2.3. Ordenação das Colunas
+
+* **CT21 - Ordenação alfabética:** Clicar nas setas de ordenação da coluna "Nome" para alternar entre ordem ascendente (A-Z) e descendente (Z-A).
+
+
+* **CT22 - Ordenação numérica:** Testar a ordenação na coluna "Qtde de produtos".
+
+
+
+#### 2.4. Paginação
+
+* **CT23 - Navegação entre páginas:** Clicar nos números de página (ex.: `2`, `3`, `4`, `5`) e verificar se os registos seguintes são carregados.
+
+
+* **CT24 - Botões de avanço e retrocesso:** Validar o funcionamento dos botões `«` e `»` e se o botão retroceder fica desativado na primeira página.
+
+
+
+#### 2.5. Ações por Linha
+
+* **CT25 - Ação Carrinho / Produtos (Ícone cinzento):** Clicar no ícone de carrinho e verificar se direciona para a lista de produtos associados à categoria.
+
+
+* **CT26 - Ação Editar (Ícone lápis amarelo):** Clicar no botão de edição e verificar se o formulário abre com todos os dados da categoria preenchidos.
+
+
+* **CT27 - Ação Eliminar com confirmação (Ícone caixote do lixo vermelho):** Clicar no botão de eliminar, confirmar no modal de aviso e verificar se o registo desaparece da lista.
+
+
+* **CT28 - Ação Eliminar com cancelamento:** Clicar no botão de eliminar e cancelar no modal, confirmando que a categoria é mantida.
+* **CT29 - Eliminação de categoria com produtos vinculados:** Tentar eliminar uma categoria cuja "Qtde de produtos" seja superior a zero e validar se o sistema bloqueia ou avisa sobre a dependência.
+
+#### 2.6. Auditoria
+
+* **CT30 - Botão de Auditoria:** Clicar no botão "Auditoria" no canto superior direito e validar se o histórico de alterações das categorias é exibido.

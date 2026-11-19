@@ -1,0 +1,93 @@
+Com base na interface apresentada (`Combos > Configurações`), segue a estruturação dos Casos de Teste (CTs) de QA cobrindo abas de navegação, regras de carrinho, seleção de layouts e ações de salvamento/descarte:
+
+---
+
+### 1. Navegação e Cabeçalho
+
+* **CT01 - Alternância entre abas:** Clicar na aba "Lista de combos" e validar o redirecionamento para a listagem; clicar na aba "Configurações" e validar a exibição dos blocos de layout e carrinho.
+
+
+* **CT02 - Breadcrumb/Caminho de navegação:** Verificar se a indicação textual `Combos > Configurações` está visível no topo da página.
+
+
+
+---
+
+### 2. Bloco: "Configurações do carrinho"
+
+* **CT03 - Alternância do switch automático:** Clicar no interruptor de ativação azul "Adicionar combo automaticamente ao carrinho" para habilitar e desabilitar a funcionalidade.
+
+
+* **CT04 - Tooltip informativo do carrinho (`ℹ`):** Passar o cursor ou clicar no ícone de informação ao lado de "Adicionar combo automaticamente ao carrinho" e validar se a mensagem explicativa é exibida.
+
+
+
+---
+
+### 3. Bloco: "Combos com 1 produto" (Seleção e Personalização de Layout)
+
+* **CT05 - Renderização dos cards de layout de encarte:** Validar se os 5 modelos padrão estão visíveis na tela ("Leve 2, Pague 1", "Leve 3, Pague 2", "Leve 4, Pague 3", "Leve 5, Pague 4" e "Leve X, Pague Y").
+
+
+* **CT06 - Seleção de tema de cores:** Clicar nas opções de cores circulares (vermelho, azul, verde) em cada um dos cards de encarte e verificar a alteração da paleta visual.
+
+
+* **CT07 - Botão Personalizar:** Clicar no botão azul "Personalizar" em qualquer um dos modelos de encarte e validar a abertura do editor/modal de personalização do encarte.
+
+
+* **CT08 - Tooltip explicativo do card (`ℹ`):** Clicar ou passar o mouse no ícone `ℹ` de cada tipo de combo (ex.: ao lado do título "Leve 2, Pague 1") e validar o texto descritivo do modelo.
+
+
+
+---
+
+### 4. Ações Globais e Persistência
+
+* **CT09 - Salvar configurações:** Alterar o estado do switch do carrinho, selecionar um novo padrão de layout/cor, clicar no botão verde "Salvar" e validar a mensagem de sucesso e a persistência das opções.
+
+
+* **CT10 - Cancelar alterações:** Modificar o switch ou as cores selecionadas, clicar no botão "Cancelar" e validar se as mudanças não foram gravadas.
+
+---
+
+### Casos de Teste: Modal "Edite a imagem" (Cropper)
+
+* **CT11 - Upload e exibição da área de corte (*Cropper*):** Realizar o upload de um arquivo de imagem válido (JPG/PNG) e validar a abertura do modal "Edite a imagem", exibindo a grade de recorte e a resolução sugerida (`1000px x 1000px`).
+
+
+* **CT12 - Miniatura de pré-visualização lateral:** Validar se a imagem carregada é refletida em tempo real no quadro de miniatura com borda vermelha à direita.
+
+
+* **CT13 - Checkbox "Limitar Borda de corte":** Marcar e desmarcar a opção "Limitar Borda de corte" e validar se a área de manipulação do recorte restringe o movimento para dentro dos limites do arquivo.
+
+
+* **CT14 - Tooltip explicativo de borda de corte (`ℹ`):** Clicar ou passar o cursor sobre o ícone `ℹ` ao lado de "Limitar Borda de corte" e verificar a mensagem de ajuda.
+
+
+* **CT15 - Botão "Ajuste Automático":** Clicar em "Ajuste Automático" e validar se a grade centraliza e enquadra a imagem automaticamente na proporção correta.
+
+
+* **CT16 - Botão "Trocar imagem":** Clicar em "Trocar imagem" (botão azul-petróleo) e validar se o seletor de arquivos é acionado para substituir a mídia atual.
+
+
+* **CT17 - Botão "Remover":** Clicar no botão vermelho "Remover" e checar se a imagem atual é limpa, retornando a área de upload para o estado inicial (*"Clique, arraste ou cole uma imagem"*).
+
+
+* **CT18 - Confirmar corte e salvar no modal:** Ajustar a imagem, clicar no botão verde "Salvar" do modal e validar se a janela é fechada e a imagem processada é aplicada ao encarte.
+
+
+* **CT19 - Fechar modal sem salvar:** Clicar no ícone de "x" no canto superior direito e validar se o recorte/upload é descartado sem aplicar alterações.
+
+
+### Casos de Teste: Mudança de Estado no Card do Encarte
+
+* **CT20 - Atualização do fundo do encarte com a imagem customizada:** Após salvar no modal, validar se a imagem de fundo do card ("Leve 2, Pague 1") é substituída pela paisagem recortada com as informações de preço e produto sobrepostas.
+
+
+* **CT21 - Criação da bolha/opção circular com a miniatura personalizada:** Validar se um novo seletor circular com a miniatura da foto personalizada é adicionado ao lado das cores padrão (vermelho, azul, verde) com o anel de seleção azul ativo.
+
+
+* **CT22 - Transição de "Personalizar" para "Editar":** Verificar se o botão azul do card que antes exibia o texto "Personalizar" passa a exibir o texto **"Editar"** após haver uma imagem cadastrada.
+
+
+* **CT23 - Reabertura pelo botão "Editar":** Clicar em "Editar" e checar se o modal reabre com a imagem e corte previamente configurados preservados.

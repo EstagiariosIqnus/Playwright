@@ -1,0 +1,94 @@
+Com os novos detalhes exibidos no modal **Configuração de aplicação (Checar horários)** da Etapa 5 (que inclui a secção **FLUXO DE REDIRECIONAMENTO** com as abas *Tag*, *Fixo* e *Customizado*, além dos campos obrigatórios *Etapa do fluxo ** e *Nível **), atualizei os casos de teste da **Etapa 5** e mantive a lista completa e unificada das 5 etapas:
+
+Casos de Teste: Fluxos de Loja - Etapa 1: Abertura
+
+* CT01 - Visualização e tooltips das colunas de fluxo: Validar a exibição das duas colunas de simulação ("PRIMEIRO CONTATO DO CLIENTE" e "CLIENTE JÁ FALOU") e clicar/passar o cursor nos ícones ℹ para verificar as mensagens orientativas de cada cenário.
+
+
+* CT02 - Configuração de aplicação (Enviar texto): Clicar no ícone de lápis no bloco "Enviar texto", alterar o texto da mensagem, testar as ferramentas de formatação (emoji, negrito, itálico, riscado, código), inserir uma variável pelo botão "Adicionar variável+", validar o limite de 1024 caracteres e salvar, conferindo a atualização no preview.
+
+
+* CT03 - Configuração de aplicação (Termo de Privacidade - LGPD): Abrir o modal de edição do "Termo de Privacidade (LGPD)", validar a obrigatoriedade do campo "Mensagem *", alternar entre as opções de destino ("Loja Virtual", "PDF" e "URL"), preencher o link/arquivo correspondente e salvar.
+
+
+* CT04 - Configuração de aplicação (Enviar banners): Clicar no ícone de lápis do bloco "Escolher Banner", abrir o dropdown "Grupo de Banners", selecionar um grupo disponível (ex.: Banner Promocional), clicar em "Salvar" e validar o reflexo no mockup de visualização.
+
+
+* CT05 - Configuração de aplicação (Enviar encartes): Clicar no ícone de lápis do bloco "Escolher Encarte", selecionar uma opção no dropdown "Envio de encarte por loja" (ex.: Todos), salvar e verificar a atualização no card de preview.
+
+
+* CT06 - Edição independente entre fluxos (Primeiro contato vs Cliente já falou): Alterar mensagens, banners ou encartes na coluna "CLIENTE JÁ FALOU" e validar se as alterações são aplicadas isoladamente sem sobrescrever as configurações de "PRIMEIRO CONTATO DO CLIENTE".
+
+
+* CT07 - Navegação na Etapa 1 ("Voltar", "Pular etapa" e "Salvar e avançar"): Testar o retorno pelo botão "< Voltar", o avanço direto sem salvar pelo link "Pular etapa >>" e o salvamento com transição para a etapa 2 ("Atendimento") clicando em "Salvar e avançar".
+
+
+
+Casos de Teste: Fluxos de Loja - Etapa 2: Atendimento
+
+* CT08 - Visualização das colunas de atendimento e tooltips: Validar a exibição dos três cenários de atendimento ("DENTRO DO HORÁRIO", "FORA DO HORÁRIO" e "FERIADO") e verificar os tooltips nos ícones ℹ de cada coluna.
+
+
+* CT09 - Configuração de aplicação (Checar horários): Clicar no ícone de lápis do botão azul "Checar horário:" no topo do mockup, selecionar uma grade de horário no dropdown "Selecione..." do modal "Configuração de aplicação (Checar horários)" e salvar.
+
+
+* CT10 - Configuração de aplicação (Transferir atendimento - Dentro do Horário): Clicar no lápis do bloco "Transferir atendimento", editar a "Mensagem de transferência *" (com variáveis/formatação), alternar entre "Todos os clientes" e "Apenas clientes carteirizados", selecionar um setor em "Escolha um novo setor", selecionar a "Loja", marcar/desmarcar "Usar loja favorita de compras do cliente" e salvar, verificando se o alerta vermelho "Setor: Não definido" é atualizado.
+
+
+* CT11 - Edição de mensagem (Fora do Horário): Clicar no ícone de lápis do bloco "Checar horário" na coluna "FORA DO HORÁRIO", personalizar o texto informativo de expediente e salvar, conferindo o preview e a manutenção da tag "TAG: Ajuda".
+
+
+* CT12 - Edição de mensagem (Feriado): Clicar no ícone de lápis do bloco "Checar horário" na coluna "FERIADO", editar a mensagem (mantendo ou inserindo variáveis como `#first_client_name#`) e salvar, validando o preview e a tag associada.
+
+
+* CT13 - Navegação e conclusão da Etapa 2: Validar o retorno à etapa 1 pelo botão "< Voltar", o avanço direto pelo "Pular etapa >>" e o salvamento completo da etapa 2 clicando em "Salvar e avançar" para seguir para a etapa 3 ("Despedida").
+
+
+
+Casos de Teste: Fluxos de Loja - Etapa 3: Despedida
+
+* CT14 - Visualização e tooltips das colunas de despedida: Validar a exibição dos três cenários ("DESPEDIDA DE SUCESSO", "DESPEDIDA DE CANCELAMENTO" e "DESPEDIDA DE ABANDONO") e verificar os tooltips nos ícones ℹ de cada coluna.
+
+
+* CT15 - Configuração de aplicação (Enviar texto nas despedidas): Clicar no ícone de lápis do bloco "Enviar texto" em cada coluna, editar a mensagem de encerramento, testar formatações (emoji, negrito, itálico, riscado, código), inserir variáveis pelo botão "Adicionar variável+", validar o limite de 1024 caracteres e salvar.
+
+
+* CT16 - Configuração de aplicação (Finalizar atendimento): Clicar no ícone de lápis do bloco azul "Finalizar atendimento", selecionar o status em "Finalizar como: *" (ex.: Vendido, Cancelado, Fechado p/ abandono), marcar/desmarcar a checkbox "Redirecionar para pesquisa de satisfação", clicar em "Salvar" e validar se a tag laranja "Vai para pesquisa" aparece ou some no mockup.
+
+
+* CT17 - Navegação e conclusão da Etapa 3: Testar o retorno à etapa 2 pelo botão "< Voltar", o avanço direto sem salvar pelo link "Pular etapa >>" e o salvamento com transição para a etapa 4 ("Pesquisa de sucesso") clicando em "Salvar e avançar".
+
+
+
+Casos de Teste: Fluxos de Loja - Etapa 4: Pesquisa de Sucesso
+
+* CT18 - Visualização e tooltips da Pesquisa de Sucesso: Validar a exibição das três colunas de simulação ("NOTA ALTA (4 OU 5)", "NOTA BAIXA (3 A 1)" e "SEM RESPOSTA") e verificar os tooltips explicativos nos ícones ℹ.
+
+
+* CT19 - Configuração de aplicação (Pesquisa de satisfação - Mensagem e filtro): Clicar no ícone de lápis do card principal da pesquisa, editar o texto da escala de avaliação (1 a 5), marcar/desmarcar a opção "Enviar apenas para clientes que realizaram uma compra", validar o limite de 1024 caracteres e salvar.
+
+
+* CT20 - Tratativa de nota negativa e Notificação de gerente: Abrir a configuração da coluna "NOTA BAIXA (3 A 1)", editar a "Mensagem:" da seção "TRATATIVA DE NOTA NEGATIVA", selecionar uma opção no dropdown "Notificar gerente" (ex.: Não notificar ou notificar responsável), salvar e validar o reflexo na etiqueta laranja "Notificar gerente" do mockup.
+
+
+* CT21 - Mensagem de agradecimento e finalização por inatividade (Sem resposta): Editar os blocos de "Enviar texto" (agradecimento pós-nota) e a mensagem da coluna "SEM RESPOSTA" ("Seu atendimento foi finalizado"), salvando e conferindo o preview.
+
+
+* CT22 - Navegação e conclusão da Etapa 4: Validar o retorno à etapa 3 pelo botão "< Voltar", o avanço direto pelo "Pular etapa >>" e o salvamento completo da etapa 4 clicando em "Salvar e avançar" para seguir para a etapa 5 ("Ajuda").
+
+
+
+Casos de Teste: Fluxos de Loja - Etapa 5: Ajuda
+
+CT23 - Visualização e navegação na Etapa 5 (Ajuda):
+Validar o carregamento da tela "Fluxos de loja (Ajuda)" com o indicador de progresso em 80% na etapa 5 (Ajuda). Verificar a exibição das três colunas ("DENTRO DO HORÁRIO", "FORA DO HORÁRIO" e "FERIADO"), os ícones de informação (ℹ) nos cabeçalhos, os mockups de chat com os blocos e etiquetas laranjas de status, além dos botões de rodapé < Voltar, Pular etapa >> e Salvar e avançar.   
+
+CT24 - Configuração de aplicação (Checar horários e Fluxo de Redirecionamento):
+Clicar no ícone de lápis ao lado do botão azul Checar horário: para abrir o modal "Configuração de aplicação (Checar horários)". Selecionar uma grade de horário no dropdown "Selecione..." e validar a exibição da etiqueta laranja (ex.: ↪ FORA DO HORÁRIO). Editar o campo "Mensagem" (testando o seletor de emojis, formatações B, I, ~S~, </>, o botão Adicionar variável+ e o contador com limite de 1024 caracteres). Alternar entre as abas de "FLUXO DE REDIRECIONAMENTO" ("Tag", "Fixo" e "Customizado"); na aba "Fixo", preencher os campos obrigatórios *"Etapa do fluxo " (ex.: Ajuda) e *"Nível " (ex.: 2) e clicar em Salvar.   
+
+CT25 - Configuração de transferência no fluxo de Ajuda (Dentro/Fora do horário e Feriado):
+Clicar no ícone de lápis dos balões "Transferir atendimento" nas colunas de Ajuda para abrir o modal "Configuração de aplicação (Transferir atendimento)". Editar a *"Mensagem de transferência " (utilizando emojis, formatação B/I/~S~/ </>, Adicionar variável+ e respeitando o limite de 1024 caracteres). Em "Considerar quais clientes ao transferir o atendimento?", alternar entre os radio buttons "Todos os clientes" e "Apenas clientes carteirizados". Definir o setor no dropdown "Escolha um novo setor" ("Selecione o setor responsável..."), verificar/alterar o dropdown "Loja" (ex.: Drogarias Fortaleza_1794856278707), marcar/desmarcar o checkbox "Usar loja favorita de compras do cliente" e clicar em Salvar, validando se a etiqueta laranja de alerta ↪ Setor: Não definido ⚠️ no mockup é atualizada.   
+
+CT26 - Finalização dos Fluxos de Loja (Salvar e avançar / Pular etapa):
+Com todas as configurações da etapa 5 definidas, clicar no botão Salvar e avançar no canto inferior direito e validar o salvamento completo (barra de progresso avançando de 80% para 100%) e o redirecionamento final. (Cenário alternativo: validar também o comportamento ao clicar em Pular etapa >> ou < Voltar no rodapé).   
+

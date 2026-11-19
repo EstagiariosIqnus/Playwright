@@ -1,0 +1,27 @@
+
+---
+
+### Casos de Teste: Configurações > Respostas Rápidas
+
+* **CT01 - Visualização, busca e ordenação na listagem de Respostas Rápidas:**
+Validar o carregamento da tela **`Configurações > Respostas Rápidas`**. Verificar a exibição da tabela com as colunas **Atalho**, **Mensagem**, **Setores** e **Ações** (ícones amarelo de editar e vermelho de excluir), o contador de registros no rodapé (*"Mostrando de 1 até 6 de 6 registros"*), o botão flutuante azul **`+`** no canto inferior direito, a ordenação das colunas e o filtro pelo campo **`Pesquisar`**.
+
+
+* **CT02 - Cadastro de nova Resposta Rápida (Tela Adicionar):**
+Clicar no botão flutuante **`+`** para acessar **`Configurações > Respostas Rápidas > Adicionar`**. Preencher o campo obrigatório **"Atalho: *"**, escrever o texto no campo **"Mensagem"** utilizando o botão **`Adicionar variável +`**, verificar o setor padrão **`× Todos`** ou selecionar setores específicos em **"Adicionar um ou vários setores"**, clicar em **`Salvar`** e validar se o novo registro aparece na tabela de listagem.
+
+
+* **CT03 - Upload de mídia e validação de campos obrigatórios no cadastro:**
+Na tela **`Adicionar`**, verificar o tooltip no ícone de informação (`ℹ`) ao lado de **"Arquivo:"** e testar o upload de um arquivo/imagem pelo botão **`+`** (validando a substituição da miniatura *"IMAGEM INDISPONÍVEL"* pela pré-visualização). Testar também o clique em **`Salvar`** com o campo obrigatório **"Atalho: *"** vazio para validar o bloqueio e o alerta de obrigatoriedade.
+
+
+* **CT04 - Edição de Resposta Rápida existente:**
+Na listagem, clicar no ícone amarelo de lápis (**Editar**) de um registro (ex.: *"algo mais"*). Na tela **`Configurações > Respostas Rápidas > Editar`**, validar o carregamento dos dados atuais (**Atalho**, **Mensagem** e tags de **Setores** como `× Televendas`), alterar os valores, clicar em **`Salvar`** e verificar se as alterações refletem corretamente na tabela.
+
+
+* **CT05 - Cancelamento de criação/edição sem salvar:**
+Nas telas **`Adicionar`** e **`Editar`**, preencher ou alterar os campos e clicar no botão cinza **`Cancelar`**, validando o retorno à tela de listagem **`Respostas Rápidas`** sem persistir os dados modificados.
+
+
+* **CT06 - Exclusão de Resposta Rápida:**
+Na coluna **Ações** da listagem, clicar no ícone vermelho de lixeira de um registro, confirmar a exclusão no alerta/modal de confirmação (se exibido) e validar se o item é removido da tabela e se o contador de registros é atualizado.

@@ -1,0 +1,42 @@
+
+### Casos de Teste: Atendentes - Etapa 1: Atendentes
+
+* **CT01 - Visualização e elementos da tela de Atendentes:**
+Validar o carregamento da tela **"Atendentes"** na etapa **1 (Atendentes)** com indicador de progresso em **0%**. Verificar a exibição das seções **"Criação de usuários"** (com o alerta amarelo *"Atenção! Ao adicionar múltiplos usuários por e-mail..."*), **"Controle de acesso"**, **"Configurações avançadas"**, o painel lateral **"ATENDENTES ATUAIS"** (tabela com colunas **Nome** e **Email**, ordenação e paginação) e os botões de rodapé **`< Voltar`**, **`Pular etapa >>`** e **`Salvar e avançar`**.
+
+
+* **CT02 - Validação de campos obrigatórios na criação de usuários:**
+Tentar clicar em **`Salvar e avançar`** sem preencher os campos obrigatórios (**"E-mails *"** e **"Ver atendimentos dos seguintes setores *"**) e validar se o sistema bloqueia o avanço e exibe as mensagens de validação exigindo o preenchimento.
+
+
+* **CT03 - Cadastro de múltiplos atendentes por e-mail:**
+Inserir um ou mais e-mails válidos (um por linha, conforme o placeholder `usuário01@email.com`) no campo **"E-mails *"**, configurar os setores e permissões, salvar e verificar se os novos atendentes passam a ser listados na tabela **"ATENDENTES ATUAIS"** (testando também formatos de e-mail inválidos).
+
+
+* **CT04 - Configuração de Controle de acesso (Setores, Permissões e Tooltips):**
+Verificar os tooltips nos ícones de informação (`ℹ`) ao lado de **"Ver atendimentos dos seguintes setores"**, **"Permissões"** e **"Permitir avançar para pós-venda"**. Pesquisar e selecionar um ou mais setores no campo *"Pesquisar..."* e adicionar/remover tags de permissões (ex.: **`× Atendimento`**, **`× Venda`**, **`× Permitir avançar para pós-venda`**).
+
+
+* **CT05 - Configurações avançadas (Mensagem inicial de atendimento):**
+Ativar e desativar o toggle **"Enviar mensagem inicial de atendimento"** (validando o tooltip `ℹ` e o desbloqueio/bloqueio do campo de texto). Editar a mensagem padrão (`"Olá, sou #seller_name# e vou realizar seu atendimento! No que posso ajudar hoje? 🤗"`), testar o seletor de emojis, as formatações **B**, *I*, ~S~, `</>` e a inserção de variáveis pelo botão **`Adicionar variável+`**.
+
+
+* **CT06 - Navegação e conclusão da Etapa 1:**
+Testar o retorno pelo botão **`< Voltar`**, o avanço sem salvar pelo link **`Pular etapa >>`** e o salvamento com transição para a etapa **2 (Motivos de cancelamento)** clicando em **`Salvar e avançar`**.
+
+
+
+---
+
+### Casos de Teste: Atendentes - Etapa 2: Motivos de cancelamento
+
+* **CT07 - Visualização e Pré-visualização de Motivos de cancelamento:**
+Validar o carregamento da etapa **2 (Motivos de cancelamento)**. Verificar a lista de motivos padrão à esquerda (**"Finalizar atendimento"** com **Atalho `0**`, **"Apenas Orçamento"** `1`, **"Produto sem estoque"** `2`, **"Comprou no concorrente"** `3`, **"Comprou na loja física"** `4` e **"Dúvidas sobre a entrega"** `5`) e o card **"PRÉ-VISUALIZAÇÃO"** (*"Atualizar atendimento"*) à direita.
+
+
+* **CT08 - Ativação/desativação de motivos e reflexo na Pré-visualização:**
+Alternar os switches (toggles) de cada motivo de cancelamento (**"Apenas Orçamento"**, **"Produto sem estoque"**, **"Comprou no concorrente"**, **"Comprou na loja física"** e **"Dúvidas sobre a entrega"**) e validar em tempo real se os botões correspondentes e seus números de **Atalho** são exibidos ou ocultados na seção **"Encerrar atendimento"** dentro do card **"PRÉ-VISUALIZAÇÃO"**.
+
+
+* **CT09 - Finalização do módulo de Atendentes (Salvar e avançar / Navegação):**
+Testar o retorno à etapa 1 pelo botão **`< Voltar`**, o avanço direto pelo **`Pular etapa >>`** e clicar em **`Salvar e avançar`** com os motivos configurados, validando o salvamento das alterações, a atualização do percentual de progresso e o redirecionamento final.
