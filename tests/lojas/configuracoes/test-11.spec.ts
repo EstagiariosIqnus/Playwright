@@ -1,0 +1,58 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://mariameiretreinamento.botvendas.com/login');
+  await page.getByRole('textbox', { name: 'Login' }).fill('admin@iqnus.com.br');
+  await page.getByRole('textbox', { name: 'Senha' }).click();
+  await page.getByRole('textbox', { name: 'Senha' }).click();
+  await page.getByRole('textbox', { name: 'Senha' }).fill('Bot@iq587!');
+  await page.getByRole('textbox', { name: 'Senha' }).press('Enter');
+  await page.getByRole('heading', { name: 'Loja 01' }).click();
+  // await page.getByRole('heading', { name: 'Loja 01' }).check();
+  await page.goto('https://mariameiretreinamento.botvendas.com/shops/edit/general?2=');
+  // await page.getByText('Ativar/Desativar preço').click();
+  await page.getByRole('checkbox', { name: 'Ativar/Desativar preço' }).check();
+  // await page.getByText('Levar em consideração apenas').click();
+  await page.getByRole('checkbox', { name: 'Levar em consideração apenas' }).check();
+  await page.locator('input[name="wholesale_min_quantity"]').click();
+  await page.locator('input[name="wholesale_min_quantity"]').fill('2');
+  await page.locator('input[name="wholesale_min_total"]').click();
+  await page.locator('input[name="wholesale_min_total"]').fill('66');
+  await page.locator('select[name="wholesale_days_length"]').selectOption('60');
+  await page.getByText('Itens falta').click();
+  await page.getByText('Valor total').click();
+  await page.getByText('Lembrete de prazo para').click();
+  await page.getByRole('checkbox', { name: 'Lembrete de prazo para' }).check();
+  await page.getByText('Itens falta').click();
+  await page.getByText('Total do pedido').click();
+  await page.getByText('Itens total Itens meta Itens').click();
+  await page.getByText('Itens total').click();
+  await page.locator('.row > div:nth-child(2)').first().click();
+  await page.getByText('Período falta').click({
+    clickCount: 3
+});
+  await page.getByText('Quantidade mínima de itens: Valor mínimo de compras: Intervalo de vendas: 1 mês').click();
+  await page.getByLabel('Setor padrão para pedidos no status de separação:').selectOption('10');
+  await page.getByLabel('Setor padrão para pedidos no status de separação:').selectOption('1');
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.goto('https://mariameiretreinamento.botvendas.com/shops/edit/general?2=');
+  // await page.getByRole('link', { description: 'editar', exact: true }).click();
+  await page.locator('.custom-control.custom-switch.font-weight-bold').first().click();
+  // await page.getByText('Levar em consideração apenas').click();
+  await page.getByRole('checkbox', { name: 'Levar em consideração apenas' }).uncheck();
+  await page.locator('div:nth-child(4) > .form-row > div').first().click();
+  await page.getByText('Quantidade mínima de itens: Valor mínimo de compras: Intervalo de vendas: 1 mês').click();
+  // await page.locator('input[name="wholesale_min_total"]').click();
+  await page.getByText('Setor padrão para pedidos no status de separação:').click();
+  await page.getByLabel('Setor padrão para pedidos no status de separação:').click();
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.goto('https://mariameiretreinamento.botvendas.com/shops/edit/general?2=');
+  await page.getByRole('heading', { name: ' Dados do Robô:' }).click();
+  await page.locator('input[name="botname"]').click();
+  await page.locator('input[name="botname"]').fill('ola');
+  await page.getByRole('textbox', { name: '(11) 96123-' }).click();
+  await page.getByRole('textbox', { name: '(11) 96123-' }).fill('(85) 3034-9950');
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.getByRole('link', { name: ' Clientes ' }).click();
+  await page.getByRole('link', { name: ' Cadastros' }).click();
+});

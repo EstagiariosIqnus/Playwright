@@ -1,0 +1,44 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  test.setTimeout(60000);
+  await page.goto('about:blank');
+  await page.goto('https://roselanematostreinamento.botvendas.com/login');
+  await page.getByRole('textbox', { name: 'Login' }).fill('admin@iqnus.com.br');
+  await page.getByRole('textbox', { name: 'Senha' }).click();
+  await page.getByRole('textbox', { name: 'Senha' }).fill('Bot@iq587!');
+  await page.getByRole('button', { name: 'Entrar' }).click();
+  await page.getByText('Loja 1Desconfig.(85) 3034-').click();
+  await page.goto('https://roselanematostreinamento.botvendas.com/dashboard');
+  await page.getByRole('link', { name: '$ Cobrança ' }).click();
+  await page.getByRole('link', { name: ' Configurações', exact: true }).click();
+  await page.goto('https://roselanematostreinamento.botvendas.com/billings/config');
+  await page.getByRole('textbox', { name: 'Mensagem de erro:  ' }).click();
+  await page.getByRole('textbox', { name: 'Mensagem de erro:  ' }).press('CapsLock');
+  await page.getByRole('textbox', { name: 'Mensagem de erro:  ' }).fill('E');
+  await page.getByRole('textbox', { name: 'Mensagem de erro:  ' }).press('CapsLock');
+  await page.getByRole('textbox', { name: 'Mensagem de erro:  ' }).fill('Erro.');
+  await page.locator('#billing_schedule_id').selectOption('1');
+  await page.getByRole('textbox', { name: 'Juros (Percentual):  ' }).click();
+  await page.getByRole('textbox', { name: 'Juros (Percentual):  ' }).press('ArrowRight');
+  await page.getByRole('textbox', { name: 'Juros (Percentual):  ' }).fill('2,00000');
+  await page.getByRole('textbox', { name: 'Juros (Percentual):  ' }).press('ArrowDown');
+  await page.getByRole('radio', { name: 'Multa (Valor Percentual):' }).check();
+  await page.getByRole('textbox', { name: 'Multa (Valor Percentual):  ' }).click();
+  await page.getByRole('textbox', { name: 'Multa (Valor Percentual):  ' }).fill('2,00000');
+  await page.locator('select#managers_watching_report + .select2-container input.select2-search__field').click();
+  await page.getByRole('option', { name: 'Lidia Maria' }).click();
+  await page.locator('#select2-managers_watching_report-results').getByRole('option', { name: 'Andreza Leite' }).click();
+  await page.getByRole('searchbox', { name: 'Selecione...' }).first().click();
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.locator('input[name="billing_message_limit"]').click();
+  await page.locator('input[name="billing_message_limit"]').fill('2');
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.getByRole('button', { name: 'Selecione um template... ' }).click();
+  await page.getByLabel('Setor de cobrança:').selectOption('2');
+  await page.locator('span').filter({ hasText: 'Atenção!' }).click();
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.getByText('× Sucesso! Configurações').click();
+});
+//deu certo (só tá vermelho por conta das informações obrigatórias que teria que colocar mas não tenho como)

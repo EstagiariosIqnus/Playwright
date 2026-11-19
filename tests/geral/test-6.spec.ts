@@ -1,0 +1,78 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  test.setTimeout(60000);
+  await page.goto('https://mariameiretreinamento.botvendas.com/login'); 
+  await page.getByRole('textbox', { name: 'Login' }).fill('admin@iqnus.com.br');
+  await page.getByRole('textbox', { name: 'Senha' }).click();
+  await page.getByRole('textbox', { name: 'Senha' }).fill('Bot@iq587!');
+  await page.getByRole('textbox', { name: 'Senha' }).press('Enter');
+  
+  // CT16 - Configuração de tempos de transição (Auto Atendimento, Aguardando vendedor, Inatividade, etc.):
+  await page.getByRole('link', { name: ' Lojas ' }).click();
+  await page.getByRole('link', { name: ' Configurações' }).click();
+  await page.getByText('Loja 01Desconfig.(85) 3034-').click();
+  await page.goto('https://mariameiretreinamento.botvendas.com/shops/edit/general?2=');
+  await page.getByRole('spinbutton', { name: 'Chat' }).click();
+  await page.getByRole('spinbutton', { name: 'Chat' }).fill('30');
+  await page.getByRole('spinbutton', { name: 'Loja virtual' }).click();
+  await page.getByRole('spinbutton', { name: 'Loja virtual' }).fill('45');
+  await page.getByRole('spinbutton', { name: 'API' }).click();
+  await page.getByRole('spinbutton', { name: 'API' }).fill('90');
+  await page.locator('input[name="attendance_idle_timeout"]').click();
+  await page.locator('input[name="attendance_idle_timeout"]').press('ArrowRight');
+  await page.locator('input[name="attendance_idle_timeout"]').press('ArrowRight');
+  await page.locator('input[name="attendance_idle_timeout"]').press('ArrowRight');
+  await page.locator('input[name="attendance_idle_timeout"]').press('ArrowRight');
+  await page.locator('input[name="attendance_idle_timeout"]').fill('15');
+  await page.locator('input[name="attendance_idle_alert"]').click();
+  await page.locator('input[name="attendance_idle_alert"]').fill('10');
+  await page.locator('input[name="attendance_client_idle_timeout"]').click();
+  await page.locator('input[name="attendance_client_idle_timeout"]').fill('40');
+  await page.locator('input[name="waiting_client_timeout"]').click();
+  await page.locator('input[name="waiting_client_timeout"]').fill('20');
+  await page.locator('input[name="abandoned_timeout"]').click();
+  await page.locator('input[name="abandoned_timeout"]').fill('20');
+  await page.locator('input[name="abandoned_timeout"]').press('ArrowRight');
+  await page.locator('input[name="abandoned_timeout"]').press('ArrowRight');
+  await page.locator('input[name="abandoned_timeout"]').press('ArrowRight');
+  await page.locator('input[name="abandoned_timeout"]').fill('5');
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.locator('body').press('F5');
+  await page.goto('https://mariameiretreinamento.botvendas.com/shops/edit/general?2=');
+  await page.locator('input[name="attendance_idle_timeout"]').click();
+  await page.locator('input[name="attendance_idle_alert"]').click();
+  await page.locator('input[name="attendance_client_idle_timeout"]').click();
+  await page.locator('input[name="waiting_client_timeout"]').click();
+  await page.locator('input[name="abandoned_timeout"]').click();
+  await page.locator('input[name="attendance_idle_timeout"]').click();
+  await page.locator('input[name="attendance_idle_timeout"]').press('ArrowRight');
+  // await page.locator('input[name="attendance_idle_timeout"]').press('ArrowRight');
+  // await page.locator('input[name="attendance_idle_timeout"]').press('ArrowRight');
+  await page.locator('input[name="attendance_idle_timeout"]').fill('');
+  // await page.locator('.col-12.form-group.pl-5').first().click();
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.getByText('O timeout de em atendimento p').nth(1).click();
+  await page.getByText('Essa ação não pôde ser').click();
+  await page.getByText('Em atendimento Aguardando vendedor Min O timeout de em atendimento p/').click();
+  await page.locator('input[name="attendance_idle_timeout"]').click();
+  await page.locator('input[name="attendance_idle_alert"]').click();
+  await page.locator('input[name="attendance_idle_alert"]').fill('-10');
+  await page.locator('input[name="attendance_idle_alert"]').press('ArrowRight');
+  await page.locator('input[name="attendance_client_idle_timeout"]').click();
+  // await page.locator('input[name="attendance_client_idle_timeout"]').click();
+  await page.locator('input[name="attendance_client_idle_timeout"]').fill('0');
+  await page.locator('input[name="attendance_idle_alert"]').click();
+  await page.locator('input[name="attendance_idle_alert"]').fill('4.5');
+  await page.locator('input[name="attendance_idle_alert"]').press('ArrowRight');
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.locator('body').press('F5');
+  // Se o input tiver name (ex: name="chat_timeout" ou similar)
+  await expect(page.locator('#open_timeout')).toHaveValue('30');
+  await expect(page.locator('#webapp_timeout')).toHaveValue('45');
+  await expect(page.locator('#api_timeout')).toHaveValue('90');
+
+  await page.getByRole('spinbutton', { name: 'Chat' }).click();
+  await page.getByRole('spinbutton', { name: 'Loja virtual' }).click();
+  await page.getByText('Chat Min Loja virtual Min API').click();
+});

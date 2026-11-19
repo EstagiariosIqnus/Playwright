@@ -1,0 +1,36 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+    test.setTimeout(60000);
+  await page.goto('https://roselanematostreinamento.botvendas.com/login');
+  await page.getByRole('textbox', { name: 'Login' }).fill('admin@iqnus.com.br');
+  await page.getByRole('textbox', { name: 'Senha' }).click();
+  await page.getByRole('textbox', { name: 'Senha' }).fill('Bot@iq587!');
+  await page.getByRole('button', { name: 'Entrar' }).click();
+  await page.getByText('Loja 1Desconfig.(85) 3034-').click();
+  await page.goto('https://roselanematostreinamento.botvendas.com/dashboard');
+  await page.getByRole('link', { name: ' Clientes ' }).click();
+  await page.getByRole('link', { name: ' Cadastros' }).click();
+  await page.goto('https://roselanematostreinamento.botvendas.com/clients/3/edit?tab=client');
+  await page.getByRole('textbox', { name: 'Nome/Razão social:' }).click();
+  await page.getByRole('textbox', { name: 'Nome/Razão social:' }).fill('');
+  await page.getByRole('textbox', { name: 'E-mail:' }).click();
+  await page.getByRole('textbox', { name: 'E-mail:' }).fill('');
+  await page.getByRole('textbox', { name: 'CPF/CNPJ:' }).click();
+  await page.getByRole('textbox', { name: 'CPF/CNPJ:' }).fill('');
+  await page.getByRole('textbox', { name: 'Data de nascimento:' }).click();
+  await page.getByRole('textbox', { name: 'Data de nascimento:' }).click();
+  await page.getByRole('textbox', { name: 'Prazo de pagamento (dias)  ' }).click();
+  await page.getByRole('textbox', { name: 'Prazo de pagamento (dias)  ' }).press('ArrowRight');
+  await page.getByRole('textbox', { name: 'Prazo de pagamento (dias)  ' }).fill('500000000');
+  await page.getByRole('textbox', { name: 'Nível de pagamento  ' }).click();
+  await page.getByRole('textbox', { name: 'Nível de pagamento  ' }).fill('10');
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.getByText('× Essa ação não pôde ser').click();
+  await page.locator('#client').getByText('O campo name é obrigatório.').click();
+  await page.getByRole('textbox', { name: 'E-mail:' }).click();
+  await page.getByRole('textbox', { name: 'E-mail:' }).fill('');
+  await page.getByRole('textbox', { name: 'Nome fantasia:' }).click();
+  await page.getByRole('textbox', { name: 'Nome fantasia:' }).fill('');
+  await page.getByRole('button', { name: 'Salvar' }).click();
+});

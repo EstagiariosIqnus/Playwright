@@ -1,0 +1,3 @@
+O teste de mensagens automáticas 
+Primeiro foi testado todos os botoẽs da tela de mensagens, depois habilitando as mensagens automáticas e escrevendo o que vai aparecer na mensagem (para que de para escrever tem que ta habilitado primeiro o botão relacionado aquela mensagem)
+O mesmo foi feito com todos os outros campos

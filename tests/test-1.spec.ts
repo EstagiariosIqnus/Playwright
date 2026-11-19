@@ -1,0 +1,78 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  test.setTimeout(50000);
+
+  await page.goto('https://mariameiretreinamento.botvendas.com/login');
+  await page.getByRole('textbox', { name: 'Login' }).click();
+  await page.getByRole('textbox', { name: 'Login' }).fill('admin@iqnus.com.br');
+  await page.getByRole('textbox', { name: 'Login' }).press('Enter');
+  await page.getByRole('textbox', { name: 'Senha' }).click();
+  await page.getByRole('textbox', { name: 'Senha' }).fill('Bot@iq587!');
+  await page.getByRole('button', { name: 'Entrar' }).click();
+  await page.getByRole('link', { name: ' Lojas ' }).click();
+  await page.getByRole('link', { name: ' Configurações' }).click();
+  await page.getByText('Loja 01Desconfig.(85) 3034-').click();
+  await page.goto('https://mariameiretreinamento.botvendas.com/contexts/contexts');
+  await page.getByRole('link', { name: ' Lojas ' }).click();
+  await page.goto('https://mariameiretreinamento.botvendas.com/shops/edit/general?2=');
+  await page.getByRole('tab', { name: 'Mensagens automáticas' }).click();
+  await page.locator('.pr-4 > div:nth-child(3)').click();
+  await page.getByRole('checkbox', { name: 'Preço de atacado' }).check();
+  await page.getByRole('checkbox', { name: 'Preço de clube de vantagens' }).check();
+  await page.getByRole('checkbox', { name: 'Preço do desconto de laborató' }).check();
+  await page.locator('.pr-4 > div:nth-child(3)').click();
+  await page.getByRole('checkbox', { name: 'Preço de clube de vantagens' }).uncheck();
+  await page.locator('.d-flex.flex-row.align-items-center.mb-2').click();
+  await page.getByRole('checkbox', { name: 'Preço de clube de vantagens' }).check();
+  await page.getByText('Mensagem automática de criação de pedido').click();
+  // await page.getByRole('checkbox', { name: 'Mensagem automática de criação de pedido' }).uncheck(); 
+  // await expect(page.locator('#sale_created_auto_message_template_id-btn')).toBeDisabled();
+  await page.locator('#sale_created_auto_message_template_id-btn').click();
+  await page.locator('#sale_created_auto_message').click();
+  await page.locator('#sale_created_auto_message').fill('Voce acabou de criar o pedido!', { force: true });
+  // await page.locator('#sale_created_auto_message').fill('Voce acabou de criar o pedido!');
+  await page.getByText('Enviar resumo do pedido').first().click();
+  await page.locator('#resume1').check();
+  await page.getByText('Mensagem automática mudança de status (Abandonado):').click();
+  await page.getByRole('checkbox', { name: 'Mensagem automática mudança de status (Abandonado):' }).check();
+  await page.locator('#abandoned_auto_message').click();
+  await page.locator('#abandoned_auto_message').fill('Esta em abandono!', { force: true });
+  await page.locator('div:nth-child(5) > .custom-control.custom-switch').click();
+  // await page.getByText('Mensagem automática mudança de status: (Separação):').click();
+  await page.getByRole('checkbox', { name: 'Mensagem automática mudança de status: (Separação):' }).check();
+  await page.locator('#post_sale_auto_message').click();
+  await page.locator('#post_sale_auto_message').fill('Seu pedido está na separação!');
+  await page.getByText('Enviar resumo do pedido').nth(1).click();
+  await page.locator('#resume2').check();
+  await page.getByText('Mensagem automática mudança de status: (Separado) (Retirada)').click();
+  await page.getByRole('checkbox', { name: 'Mensagem automática mudança de status: (Separado) (Retirada)' }).check();
+  await page.locator('#separated_in_store_auto_message').fill('Seu pedido está separado!');
+  await page.getByText('Mensagem automática mudança de status: (Delivery)').click();
+
+  await page.getByRole('checkbox', { name: 'Mensagem automática mudança de status: (Delivery)' }).check();
+  await page.locator('#delivery_auto_message').fill('Seu pedido está chegando!');
+  await page.getByText('Enviar resumo do pedido').nth(4).click();
+  await page.locator('#resume5').check();
+  await page.getByText('Mensagem automática endereço').click();
+
+  await page.getByRole('checkbox', { name: 'Mensagem automática endereço' }).check();
+  await page.locator('#delivery_address_error_auto_message').click();
+  await page.locator('#delivery_address_error_auto_message').fill('O endereço de entrega está errado!');
+  await page.getByText('Mensagem automática pedido').click();
+
+  await page.getByRole('checkbox', { name: 'Mensagem automática pedido' }).check();
+  await page.locator('#delivery_success_auto_message').click();
+  await page.locator('#delivery_success_auto_message').fill('Seu pedido foi entregue!');
+  await page.getByText('Mensagem automática de resposta de pagamento:').click();
+  await page.getByRole('checkbox', { name: 'Mensagem automática de resposta de pagamento:' }).check();
+  // await page.getByText('Mensagem automática de resposta de pagamento:').click();
+  await page.getByText('Mensagem automática de aguardando atendimento:').click();
+  await page.locator('#waiting_seller_auto_messages_0_text').click();
+  await page.locator('#waiting_seller_auto_messages_0_text').fill('Aguardando  atendimento');
+  await page.getByRole('button', { name: '+' }).click();
+  await page.locator('#waiting_seller_auto_messages_0_minutes').click();
+  await page.locator('#waiting_seller_auto_messages_0_minutes').fill('30');
+  await page.getByRole('button').filter({ hasText: /^$/ }).first().click();
+  await page.getByRole('button', { name: 'Salvar' }).click();
+});

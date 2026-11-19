@@ -1,0 +1,38 @@
+
+  await page.getByLabel('Preço atacado no carrinho').selectOption('');
+
+
+
+
+  await page.getByLabel('Preço atacado no carrinho').selectOption('on');
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.getByRole('link', { description: 'Editar', exact: true }).click();
+  await page.getByLabel('Preço atacado no carrinho').selectOption('');
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.getByRole('link', { description: 'Editar', exact: true }).click();
+
+
+
+
+
+
+  //CT10 - Seleção de Loja favorita e Loja de compras favorita:
+  await page.getByLabel('Loja favorita:').selectOption('1');
+  //CT11 - Validação da Loja obrigatória de compras:
+  await page.getByLabel('Loja de compras favorita:').selectOption('2');
+  //CT12 - Dropdown Clube de vantagens:
+  await page.getByLabel('Loja obrigatória de compras:').selectOption('1');
+  //CT13 - Atribuição de Vendedor carteirizado:
+  await page.getByLabel('Clube de vantagens').selectOption('on');
+  //CT14 - Tooltips informativos:
+  await page.getByLabel('Vendedor carteirizado:').selectOption('7');
+  //salvar
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.getByText('Sucesso!Cliente atualizado').click();
+
+
+
+
+
+
+  

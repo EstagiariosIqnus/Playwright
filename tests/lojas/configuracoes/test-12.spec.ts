@@ -1,0 +1,34 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://mariameiretreinamento.botvendas.com/login');
+  await page.getByRole('textbox', { name: 'Login' }).fill('admin@iqnus.com.br');
+  await page.getByRole('textbox', { name: 'Login' }).press('Enter');
+  await page.getByRole('textbox', { name: 'Senha' }).click();
+  await page.getByRole('textbox', { name: 'Senha' }).click();
+  await page.getByRole('textbox', { name: 'Senha' }).fill('Bot@iq587!');
+  await page.getByRole('button', { name: 'Entrar' }).click();
+  await page.getByText('Loja 01Desconfig.(85) 3034-').click();
+  // await page.getByText('Loja 01Desconfig.(85) 3034-').check();
+  await page.goto('https://mariameiretreinamento.botvendas.com/shops/edit/general?2=');
+  await page.getByText('Configurações dos Atendimentos: Desconto máximo no item do carrinho (%):').click();
+  await page.locator('input[name="max_discount_per_item"]').click();
+  await page.locator('input[name="max_discount_per_item"]').press('ArrowLeft');
+  await page.locator('input[name="max_discount_per_item"]').fill('8%');
+  await page.locator('input[name="max_items_total_discount"]').click();
+  await page.locator('input[name="max_items_total_discount"]').fill('6%');
+  await page.locator('input[name="max_order_discount"]').click();
+  await page.locator('input[name="max_order_discount"]').fill('9%');
+  await page.getByText('Verificar estoque (Produtos no peso)').click();
+  // await page.getByRole('checkbox', { name: 'Verificar estoque (Produtos no peso)' }).click();
+  await page.getByText('Envio de produto com botões').click();
+  // await page.getByRole('checkbox', { name: 'Envio de produto com botões' }).check();
+  await page.getByRole('button', { name: 'Salvar' }).click();
+  await page.goto('https://mariameiretreinamento.botvendas.com/shops/edit/general?2=');
+  await page.locator('input[name="max_discount_per_item"]').click();
+  await page.locator('input[name="max_items_total_discount"]').click();
+  await page.locator('input[name="max_order_discount"]').click();
+  await page.locator('div:nth-child(6) > .custom-control').click();
+  await page.locator('div:nth-child(5) > .custom-control').click();
+  await page.getByRole('button', { name: 'Salvar' }).click();
+});

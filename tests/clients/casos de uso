@@ -1,0 +1,81 @@
+CASOS DE USO
+
+REGISTER
+1 - Posso editar um cliente cadastrado já existente
+2 - Posso adicionar um novo cliente
+3 - Não posso salvar um cnpj com uma quantidade que ultrapasse o limite de caracteres estabelecido
+4 - Não posso salvar um cnpj com uma quantidade menor de caracteres necessários
+5 - Não posso colocar apenas o nome sem @gmail.com no campo gmail
+
+
+AFFLIATION
+1 - Posso visualizar as filiações existentes
+2 - Posso adicionar uma nova filiação (nome, cnpj ou telefone)
+3 - Posso visualizar os filiados a teste
+4 - Posso visualizar a parte de "teste está filiado a: "
+5 - Não posso adicionar uma filiação não existente (com o cnpj errado que não corresponda por exemplo)
+
+ADRESS
+1 - Posso adicionar um endereço ao cliente
+2 - Não posso salvar tendo colocado um endereço incorreto
+3 - Posso adicionar referencias do endereço do cliente
+4 - Após adicionar um endereço, posso seleciona-lo como endereço principal
+5 - Posso excluir um endereço existente
+
+ORDER
+1 - Posso verificar os pedidos existentes desse cliente em especifico
+2 - Posso ver quando ocorreu seu atendimento 
+3 - Posso ver quem o atendeu
+4 - Posso ver se existe uma filiação 
+5 - Posso ver a origem desse cliente (whatsapp, facebook, loja virtual)
+
+PRODUCTS
+1 - Posso ver o nome do produto comprado pelo cliente
+2 - Posso ver a quantidade comprada
+3 - Posso ver a frequencia de compras desse cliente
+4 - A quantidade total e o dia considerado "preferido para compras"
+5 - Posso visualizar o valor total comprado
+
+CHAT
+1 - Posso visualizar as conversas anteriores desse cliente com os atendentes
+
+VOUCHER
+1 - Podemos adicionar um crédito a esse cliente
+2 - Com os seguintes tipos: Desconto Gerente, vale presente, Vale troca e Cashback
+3 - Podemos definir um valor especifico, uma data de validade desse crédito e uma descrição
+4 - Posso excluir o crédito existente ou desativa-lo
+5 - Posso aplicar o desconto
+
+DEBTS 
+1 - Posso vizualizar as parcelas(pagamentos e boletos) existentes desse cliente
+2 - Posso ver a data de vencimento dessas parcelas
+3 - Posso ver o valor e a quantidade de parcelas 
+4 - Posso visualizar o contrato e o tipo de pagamento
+5 - Posso ver as ações, o nfe e o código de barras
+
+INTEGRATIONS
+1 - Podemos visualizar a quais integrações esse cliente está aplicado
+2 - Podemos selecionar PDV
+3 - Podemos ver qual o nome
+4 - Podemos ver qual o grupo pertencente 
+5 - Podemos visualizar as ações
+
+MEDICINE-REMINDERS
+1 - Podemos visualizar os nomes dos medicamentos, a quantidade do produto, a data do lembrete e as
+ações
+2 - Podemos adicionar um novo lembrete
+3 - Filtrar por loja
+4 - Ver o nome do produto, seu preço
+5 - visualizar as ações
+
+CAMPAINGNS
+1 - Visualizar datas
+2 - Conseguimos também vizualizar os nomes
+3 - Qual os tipos das campanhas
+4 - Pesquisar uma campanha especifica
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+CASOS DE USO 
+
+Tela 1
+1. Não posso salvar a página de configuração da loja se eu não preenceher os campos obrigatórios
+2. Consigo atualiazar as configuração da tela
+3. Tem limite de números no CNPJ então eu não consigo ultrapassar o limite desses números e se eu colocar números menores que oque pede ao salvar ele reconhece o erro e não salva
+4. Posso colocar o horário de funcionamento da loja que eu já tinha criado antes para facilitar
+5. Posso selecionar o setor que vai ficar responsável pelos status do pedido de separação, separado e delvery.
+
+
+Tela 2
+1. Consigo habilitar a mensagem automática de criação do pedido mas não consigo adicionar um template só se ele já tiver sido criado.
+2. Posso adicionar variáveis que vai puxar os nomes sem que eu precise escrever 
+3. Consigo ativar o enviar resumo do pedido
+4. A mensagem automática de aguardando atendimento tem como editar o tempo de envio, o tempo minímo é de um 1 minuto 
+5. Posso adicionar uma mensagem automática para cada status do pedido
+
+Tela 3
+1. Ao colocar o cep da loja ele já puxa as informações referente ao cep, menos o número da casa
+2. Não consigo cadastrar um cep que não existe
+3. Consigo fazer alterações no endereço
+4. Caso o endereço da loja seja atualizado, o valor do frete dos pedidos não vai mudar automaticamente tem que alterar manualmente um por um.
+5. Não posso salvar tendo colocado um endereço inexistente
+
+Tela 4
+1. Consigo integrar o bot com o telegram usando o id dele 
+2. Posso mandar uma mensagem de boas vindas no chatweb
+3. Consigo atualizar os produtos na trier
+4. Posso atualizar os produtos para ver as imagens
+5. Tem como escolher criar fretes
+
+Tela 5 
+1. Posso criar taxas de entregas
+2. Tem que colocar um nome obrigatoriamente se não ele não salva as informações 
+3. O valor da distancia tem que ser em quilometros ele não aceita virgula só ponto
+4. Posso adicionar a opção de desconto de frete grátis
+5. Consigo ver as taxas de entregas excluídas em taxas de entregas inativas
+
+Tela 6
+1. Consigo adicionar os métodos de pagamentos que desejar
+2. Tem como importar os métodos de pagamentos já criados para outras lojas para facilitar
+3. Consigo duplicar, editar e remover um pagamento
+4. Posso criar um prazo de pagamento 
+5. Consigo colocar quantas vezes pode ser pago 
+
+Tela 7 
+1. Consigo agendar o horário de agendamento de entrega
+2. Posso colocar um horário de intervalo de entregas que vale em minutos 
+3. Também consigo colocar o número máximo de entregas
+4. Consigo ativar para visualizar o horário de inicio e fim do agendamento na tela do vendedor e loja virtual
+5. Consigo salvar dos os agendamentos
+
+Tela 8
+1.Posso exportar produtos
+2. Posso importar produtos que estão em arquivos
+3. Consigo salvar os produtos importados
+4. Também dá para pesquisar os produtos já importados
+5. Saber mais sobre a importação de produtos
