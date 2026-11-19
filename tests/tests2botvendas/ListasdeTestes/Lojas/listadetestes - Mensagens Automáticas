@@ -1,0 +1,40 @@
+Atuando como QA, analisei os elementos funcionais, regras de negócio, validações de campo e fluxos de navegação das três telas do módulo **Mensagens automáticas** (Etapa 1: *Configuração das mensagens*).
+
+Aqui está a suíte completa de Casos de Teste para cobrir a funcionalidade:
+
+---
+
+### Casos de Teste: Mensagens Automáticas - Etapa 1: Configuração das mensagens
+
+* **CT01 - Visualização geral e elementos da tela de Mensagens automáticas:**
+Validar o carregamento da tela **"Mensagens automáticas"** na etapa **1 (Configuração das mensagens)** com o indicador de progresso em **0%**. Verificar a exibição das duas colunas de simulação (**"AGUARDANDO ATENDIMENTO"** e **"ABANDONO"**), os tooltips nos ícones de informação (`ℹ`) dos cabeçalhos, os mockups de chat com suas etiquetas de tempo/status (`Status: Aguardando atendimento`, `↪ Após 10 min aguardando:`, `↪ Após 20 min aguardando:`, `Status: Abandono`, `↪ Enviar depois de 15 min:`) e os botões de rodapé **`< Voltar`** e **`Salvar e avançar`**.
+
+
+* **CT02 - Ativação/Desativação das mensagens de Aguardando Atendimento:**
+Clicar no ícone de lápis da coluna **"AGUARDANDO ATENDIMENTO"** para abrir o modal **"Configuração da mensagem automática (Aguardando atendimento)"**. Alternar o switch **"Ativar envio de mensagens automáticas"**, salvar e validar se o estado ativo/inativo é persistido e refletido na simulação da tela principal.
+
+
+* **CT03 - Configuração de tempo e texto na Primeira e Segunda mensagem (Aguardando Atendimento):**
+No modal **"Configuração da mensagem automática (Aguardando atendimento)"**, editar o tempo em minutos nos campos obrigatórios **"Enviar mensagem para o cliente após *"** (`Min de espera na fila`) da **Primeira mensagem** (padrão `10`) e da **Segunda mensagem** (padrão `20`). Editar os textos nos campos **"Mensagem *"**, testando o seletor de emojis, formatações **B**, *I*, ~S~, `</>`, o botão **`Adicionar variável+`** e o contador com limite de **1024 caracteres**. Clicar em **`Salvar`** e validar se os tempos e textos foram atualizados nas etiquetas e balões do mockup.
+
+
+* **CT04 - Remoção e validações de campos obrigatórios em Aguardando Atendimento:**
+Clicar no ícone de lixeira vermelho ao lado da **"Segunda mensagem"** para validar a exclusão/remoção do segundo disparo. Testar também o salvamento com os campos obrigatórios vazios (tempo em minutos ou texto da mensagem) e com valores inválidos (ex.: tempo `0`, negativo ou tempo da segunda mensagem menor que a primeira), validando o bloqueio e os alertas de erro.
+
+
+* **CT05 - Configuração de Template e Mensagem no fluxo de Abandono:**
+Clicar no ícone de lápis da coluna **"ABANDONO"** para abrir o modal **"Configuração da mensagem automática (Abandono)"**. Abrir o seletor **"Template de mensagem"** (*"Selecione um template..."*) e selecionar um modelo pré-definido, verificando se o campo **"Mensagem *"** é preenchido automaticamente. Editar o texto manualmente (testando emojis, formatações **B**, *I*, ~S~, `</>`,`Adicionar variável+` e o limite de **1024 caracteres**), clicar em **`Salvar`** e validar a atualização no mockup da coluna **"ABANDONO"**.
+
+
+* **CT06 - Cancelamento e fechamento dos modais sem salvar:**
+Realizar alterações nos campos dos modais de **"Aguardando atendimento"** e **"Abandono"** e clicar em **`Cancelar`** ou no ícone **`×`** no canto superior direito, garantindo que o modal seja fechado e que as alterações descartadas não afetem os dados exibidos nos mockups.
+
+
+* **CT07 - Navegação e conclusão da configuração de Mensagens Automáticas:**
+Testar o retorno à tela anterior pelo botão **`< Voltar`** e, com as mensagens configuradas, clicar em **`Salvar e avançar`**, validando a persistência dos dados, a atualização do percentual de progresso (de **0%** para **100%**) e o redirecionamento final.
+
+
+
+---
+
+Se quiser, já posso gerar a estrutura inicial desses testes no formato `test('CT01: ...', async ({ page }) => {` para você colar no seu projeto Playwright!

@@ -1,0 +1,128 @@
+Plano de testes detalhado como QA para o módulo de **Grupos de Produtos** baseado nos dois ecrãs (Adicionar Grupo e Listagem de Grupos):
+
+---
+
+### 1. Tela de Cadastro: `Produtos > Grupos > Adicionar`
+
+#### 1.1. Upload de Imagem (Drag & Drop e Paste)
+
+* **CT01 - Upload por clique no container:** Clicar na área delimitada, selecionar uma imagem válida (PNG/JPG nas dimensões recomendadas de 1600x400) e validar a exibição do preview.
+
+
+* **CT02 - Upload por arrastar e soltar (Drag and Drop):** Arrastar um ficheiro de imagem diretamente para a dropzone e verificar se o carregamento ocorre com sucesso.
+
+
+* **CT03 - Upload colando da área de transferência (Paste):** Copiar uma imagem (`Ctrl + C`), focar na página e colar (`Ctrl + V`) para testar o comportamento do atalho anunciado ("ou cole uma imagem").
+
+
+* **CT04 - Validação de formato não suportado:** Tentar enviar ficheiros `.pdf`, `.txt`, `.svg` ou `.exe` e verificar se o sistema exibe mensagem de erro impeditiva.
+* **CT05 - Validação de limite de tamanho de arquivo:** Tentar anexar imagem acima do limite da aplicação (ex.: > 5 MB) e validar o tratamento de erro.
+* **CT06 - Proporção e distorção:** Carregar imagens fora da proporção 1600x400 (ex.: imagem quadrada 500x500) e verificar se o sistema recorta, redimensiona ou distorce a pré-visualização.
+
+
+
+#### 1.2. Campos de Texto e Regras de Negócio
+
+* **CT07 - Cadastro completo com sucesso:** Preencher "Nome", "Nome para loja virtual", "Cód. no ERP", anexar imagem e clicar em "Salvar". Verificar redirecionamento e criação do registo.
+
+
+* **CT08 - Cadastro apenas com campos obrigatórios:** Preencher estritamente o campo "Nome" e salvar sem imagem nem campos secundários.
+
+
+* **CT09 - Validação de campo obrigatório vazio:** Deixar o campo "Nome" em branco, clicar em "Salvar" e validar se surge o alerta/bloqueio nativo do formulário.
+
+
+* **CT10 - Campo "Cód. no ERP":**
+* Testar inserção de alfanuméricos, apenas números e carateres especiais.
+
+
+* Testar duplicidade: cadastrar um código ERP que já pertença a outro grupo e validar se há validação de unicidade.
+
+
+
+
+* **CT11 - Limite de caracteres (Análise de Valor Limite):** Inserir textos longos (ex.: 255+ caracteres) nos campos "Nome" e "Nome para loja virtual" e verificar truncamento no banco e na interface.
+
+
+* **CT12 - Segurança (XSS e SQL Injection):** Inserir tags como `<script>alert(1)</script>` ou `' OR '1'='1` nos três campos de texto e validar se o sistema sanitiza os dados sem executá-los.
+
+
+
+#### 1.3. Ações e Navegação
+
+* **CT13 - Cancelar cadastro:** Preencher os campos, clicar em "Cancelar" e verificar se as informações são descartadas e o sistema retorna para a listagem.
+
+
+* **CT14 - Navegação por Breadcrumb:** Clicar nos links `Produtos` ou `Grupos` no cabeçalho superior e validar o redirecionamento correto.
+
+
+
+---
+
+### 2. Tela de Listagem: `Produtos > Grupos`
+
+#### 2.1. Renderização e Dados da Tabela
+
+* **CT15 - Exibição das colunas:** Validar se a grelha carrega com as colunas "Nome", "Nome na Loja Virtual", "Qtde de produtos" e "Ações".
+
+
+* **CT16 - Tratamento de valores vazios:** Garantir que itens sem "Nome na Loja Virtual" exibam o traço padrão `---` em vez de ficarem nulos ou quebrados.
+
+
+* **CT17 - Ícone de status de visibilidade:** Verificar se o ícone de olho riscado ao lado do nome reflete grupos inativos/ocultos na loja.
+
+
+* **CT18 - Contador de registros:** Conferir se o indicador inferior (ex.: "1 até 23 / 100") bate com o total de linhas exibidas e o total geral de registros da base.
+
+
+
+#### 2.2. Pesquisa e Filtros
+
+* **CT19 - Busca por correspondência exata:** Digitar "Acelerador" no campo "Pesquisar" e validar se traz apenas o registro esperado.
+
+
+* **CT20 - Busca por texto parcial / Case Insensitive:** Digitar em minúsculas (ex.: "absorvente") e verificar se retorna todas as variações com maiúsculas/minúsculas ("Absorvente Interno", "Absorventes", etc.).
+
+
+* **CT21 - Busca sem resultados:** Digitar termo inexistente e verificar mensagem informativa de lista vazia.
+* **CT22 - Limpar busca:** Apagar o texto pesquisado e verificar se a listagem completa é recarregada.
+
+
+
+#### 2.3. Ordenação
+
+* **CT23 - Ordenar por "Nome":** Clicar no cabeçalho "Nome" e validar a ordenação A-Z e Z-A.
+
+
+* **CT24 - Ordenar por "Qtde de produtos":** Clicar no cabeçalho e validar ordenação crescente e decrescente (ex.: grupos com `3` produtos vs `0` produtos).
+
+
+
+#### 2.4. Paginação
+
+* **CT25 - Navegação por páginas diretas:** Clicar nos botões `2`, `3`, `4`, `5` e página final `8` e checar o carregamento correto dos registros.
+
+
+* **CT26 - Botões de avanço e retrocesso:** Validar as setas `«` e `»`. Na página 1, `«` deve estar desabilitado.
+
+
+
+#### 2.5. Ações por Linha (Grid Actions)
+
+* **CT27 - Ver produtos associados (Ícone Carrinho cinza):** Clicar no carrinho da linha "ACESSÓRIOS" (que possui 3 produtos) e verificar o redirecionamento com o filtro aplicado para esses 3 itens.
+
+
+* **CT28 - Ação Editar (Ícone Lápis amarelo):** Clicar no botão e validar se o formulário de edição abre com Nome, Nome Virtual, Cód. ERP e Imagem pré-carregados.
+
+
+* **CT29 - Exclusão com confirmação (Ícone Lixeira vermelha):** Clicar na lixeira de um grupo com 0 produtos, confirmar no modal e verificar se o item é removido da lista.
+
+
+* **CT30 - Cancelar exclusão:** Clicar na lixeira, clicar em "Cancelar" no modal de confirmação e garantir que o item permaneça inalterado.
+
+
+* **CT31 - Excluir grupo com produtos vinculados (Regra de integridade):** Tentar excluir o grupo "ACESSÓRIOS" (com 3 produtos vinculados) e validar se o sistema bloqueia com mensagem amigável.
+
+#### 2.6. Auditoria
+
+* **CT32 - Botão "Auditoria":** Clicar no botão no topo direito e checar se abre o log de alterações/criações deste módulo.

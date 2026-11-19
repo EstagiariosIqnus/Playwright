@@ -1,0 +1,129 @@
+Plano completo de casos de teste estruturado sob a ótica de QA para o módulo de **Lista de compras** (`Produtos > Lista de compras`), cobrindo a listagem, filtros, modal de substituição em massa e cadastro:
+
+---
+
+### 1. Tela de Listagem: `Produtos > Lista de compras`
+
+#### 1.1. Renderização e Dados da Tabela
+
+* **CT01 - Exibição das colunas:** Validar se a tabela apresenta corretamente as colunas "Período de vigência", "Nome da lista", "Lojas" e "Ações".
+
+* **CT02 - Estado vazio:** Quando não houver registros cadastrados ou compatíveis com a busca, verificar se é exibida a mensagem *"Nenhum registro encontrado"* centralizada.
+
+* **CT03 - Tag de filtro ativo:** Garantir a presença da tag indicadora de status de filtro (ex.: badge `Sem filtros`) abaixo do cabeçalho.
+
+#### 1.2. Ações de Linha
+
+* **CT04 - Switch de ativação/desativação:** Alternar a chave azul de status da linha e verificar se o estado de publicação da lista muda sem quebrar a tabela.
+
+* **CT05 - Ação Duplicar/Copiar (Ícone azul de folhas):** Clicar no botão azul de duplicar e validar se é criada uma cópia idêntica da lista para edição.
+
+* **CT06 - Ação Editar (Ícone amarelo de lápis):** Clicar no lápis e conferir o redirecionamento para o formulário de edição com os dados da lista carregados.
+
+* **CT07 - Ação Excluir (Ícone vermelho de lixeira):** Clicar na lixeira, confirmar a ação no modal e validar se o registro é excluído da listagem.
+
+#### 1.3. Paginação e Ações Globais
+
+* **CT08 - Navegação na paginação:** Clicar nos seletores de página (`<`, `1`, `>`) e validar o comportamento visual e carregamento dos itens.
+
+
+* **CT09 - Botão flutuante Adicionar (`+`):** Clicar no botão redondo verde com o ícone `+` no canto inferior direito e conferir o redirecionamento para a tela `Produtos > Lista de compras > Adicionar`.
+
+---
+
+### 2. Modal de Filtros (`Filtrar`)
+
+* **CT10 - Abertura e fechamento do modal:** Clicar no botão superior "Filtrar" para abrir o modal. Fechar pelo botão "Cancelar" ou no ícone "x" do topo.
+
+* **CT11 - Filtro por Nome da Lista:** Digitar termo no campo "Nome", clicar em "Filtrar" e checar se apenas listas correspondentes permanecem na grid.
+
+* **CT12 - Filtro por Data ("Disponível em"):** Selecionar uma data no calendário e verificar a correspondência com o período de vigência.
+
+* **CT13 - Filtros por Lojas, Produto e Categoria:**
+* Selecionar lojas no campo com autocomplete "Lojas".
+
+* Selecionar produtos específicos no dropdown "Produto".
+
+* Selecionar categorias vinculadas no dropdown "Categoria".
+
+* **CT14 - Combinação de filtros:** Aplicar mais de um critério simultaneamente e validar a coerência do resultado.
+
+---
+
+### 3. Modal: `Substituir produto de múlt. listas`
+
+* **CT15 - Abertura do modal:** Clicar no link superior com ícone de sincronização "Substituir produto de múlt. listas" e verificar a abertura do modal.
+
+
+* **CT16 - Busca do produto a ser retirado:** Digitar no campo com ícone de lupa e validar se o autocomplete exibe apenas produtos que constem em listas já cadastradas.
+
+
+* **CT17 - Seleção e exibição do item:** Escolher um produto e validar se a área *"O produto que será retirado aparecerá aqui"* é preenchida com o card correspondente.
+
+
+* **CT18 - Validação de campo obrigatório:** Tentar clicar em "Continuar substituição" sem selecionar o produto a ser retirado e verificar o bloqueio do avanço.
+
+
+* **CT19 - Cancelamento do fluxo:** Clicar em "Cancelar" ou no botão "x" e validar se a operação é abortada sem alterações.
+
+
+
+---
+
+### 4. Tela de Cadastro: `Produtos > Lista de compras > Adicionar`
+
+#### 4.1. Cabeçalho e Campos Principais
+
+* **CT20 - Validação de campos obrigatórios (`*`):** Tentar clicar em "Salvar" com os campos "Nome", "Exibir lista nas lojas" e "Período de vigência" em branco e verificar os avisos impeditivos.
+
+
+* **CT21 - Limite de caracteres do campo "Nome":await page.getByRole('textbox', { name: 'Nome:* Período de vigência:*' }).click();
+** Digitar texto no campo "Nome" e validar se o contador numérico de apoio (`0/90`) atualiza e bloqueia ao atingir 90 caracteres.
+
+
+* **CT22 - Seleção múltipla de Lojas ("Exibir lista nas lojas"):**
+* Adicionar múltiplas lojas e remover opções clicando no "x" da tag.
+
+
+* Tentar submeter sem nenhuma loja vinculada.
+
+
+
+
+* **CT23 - Período de vigência:** Clicar em "Escolha uma data" e definir datas válidas no calendário/datapicker.
+
+
+
+#### 4.2. Bloco "Produtos principais"
+
+* **CT24 - Adicionar produto principal:** Clicar no botão "+ Adicionar" e selecionar um produto no catálogo para vincular à lista.
+
+
+* **CT25 - Limpar todos os produtos (Lixeira vermelha do bloco):** Clicar no ícone de lixeira no cabeçalho vermelho e checar se todos os produtos da área são removidos, voltando para o estado *"Carrinho vazio"*.
+
+
+* **CT26 - Campo "Observação":** Preencher notas adicionais e conferir a contagem dinâmica de caracteres no rodapé (`0/500`).
+
+
+* **CT27 - Cálculo do TOTAL:** Verificar se o valor em "TOTAL: R$ 0,00" atualiza dinamicamente conforme itens e preços são incluídos ou retirados da lista.
+
+
+
+#### 4.3. Bloco "Produtos substitutos"
+
+* **CT28 - Comportamento com carrinho vazio:** Validar que o bloco exibe a mensagem de trava/aviso *"Não há produtos principais adicionados"* antes de haver itens principais cadastrados.
+
+
+* **CT29 - Vinculação de substituto:** Após incluir um item principal, validar a possibilidade de atrelar produtos equivalentes de substituição.
+
+
+* **CT30 - Tooltip informativo (`ℹ`):** Passar o mouse no ícone de informação ao lado de "Produtos substitutos" e conferir o texto explicativo sobre regras de substituição.
+
+
+
+#### 4.4. Ações de Encerramento
+
+* **CT31 - Salvar com sucesso:** Preencher todos os campos válidos, vincular ao menos um produto principal e salvar, verificando o redirecionamento para a tabela de listas.
+
+
+* **CT32 - Cancelar:** Preencher dados no formulário, clicar no botão "Cancelar" e verificar se as informações são descartadas.

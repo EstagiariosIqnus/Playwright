@@ -1,0 +1,106 @@
+Aqui está o plano completo de casos de teste em **Português do Brasil (PT-BR)** para o módulo de **Mundos** (`Produtos > Mundos`):
+
+---
+
+### 1. Tela de Cadastro: `Produtos > Mundos > Adicionar`
+
+#### 1.1. Campo Obrigatório "Nome"
+
+* **CT01 - Cadastro com sucesso apenas com campo obrigatório:** Preencher um valor válido no campo "Nome" (sinalizado com asterisco vermelho `*`), deixar os demais campos vazios e clicar em "Salvar". Validar redirecionamento para a listagem e criação do registro no banco.
+
+
+* **CT02 - Validação de campo obrigatório vazio:** Deixar o campo "Nome" em branco, clicar em "Salvar" e validar se a mensagem ou bloqueio nativo do formulário impede o envio.
+
+
+* **CT03 - Limite de caracteres e espaços em branco:** Testar valores longos (análise de valor limite), espaços antes/depois do texto e conferir se o layout da tela ou a base de dados não quebram.
+
+
+* **CT04 - Caracteres especiais e segurança (XSS/SQLi):** Inserir tags como `<script>alert(1)</script>` ou aspas no campo "Nome" para garantir que o sistema faça o escape/sanitização correto.
+
+
+
+#### 1.2. Chave "Controle de data" e Intervalo de Datas
+
+* **CT05 - Estado inicial do switch:** Garantir que o switch "Controle de data" venha desativado por padrão e o campo de texto de data permaneça desabilitado/bloqueado (`DD/MM/YYYY até DD/MM/YYYY`).
+
+
+* **CT06 - Ativação do controle de data:** Ligar a chave "Controle de data" e verificar se o campo de intervalo fica editável e abre o calendário/datapicker.
+
+
+* **CT07 - Preenchimento de período válido:** Definir data inicial e data final futuras válidas e salvar o formulário.
+
+
+* **CT08 - Validação de período inválido:** Tentar preencher uma data final anterior à data inicial e checar se o sistema exibe mensagem impeditiva.
+
+#### 1.3. Seletores Múltiplos (Categorias, Grupos, Produtos e Marcas)
+
+* **CT09 - Seleção única e múltipla:** Selecionar um ou mais itens em cada um dos campos: "Categorias", "Grupos", "Produtos" e "Marcas".
+
+
+* **CT10 - Filtro/Busca interna nos campos:** Digitar termos nos campos de busca suspensa ("Selecione as categorias...", etc.) e validar se as opções correspondentes aparecem.
+
+
+* **CT11 - Remoção de tags selecionadas:** Clicar no ícone de fechar (`x`) de um item já selecionado e checar se ele é removido da lista.
+
+#### 1.4. Ações e Navegação
+
+* **CT12 - Botão "Cancelar":** Preencher campos, clicar em "Cancelar" e conferir se os dados são descartados e a tela volta para a listagem.
+
+
+* **CT13 - Breadcrumb de navegação:** Clicar nos links `Produtos` ou `Mundos` na barra superior e validar o redirecionamento correto.
+
+
+
+---
+
+### 2. Tela de Listagem: `Produtos > Mundos`
+
+#### 2.1. Exibição e Dados da Tabela
+
+* **CT14 - Estrutura da tabela:** Verificar se a tabela exibe as colunas "Nome" (com ícone de globo) e "Ações".
+
+
+* **CT15 - Totalizador de registros:** Conferir se a legenda no rodapé (ex.: `1 até 1 / 1`) bate com a quantidade real de linhas e itens cadastrados.
+
+
+
+#### 2.2. Campo "Pesquisar"
+
+* **CT16 - Pesquisa exata:** Digitar `mundoteste` no campo de busca e verificar se apenas essa linha permanece visível.
+
+
+* **CT17 - Pesquisa parcial e Case-Insensitive:** Digitar `mundo` ou `MUNDOTESTE` e validar se a busca encontra o registro independentemente de maiúsculas/minúsculas.
+
+
+* **CT18 - Pesquisa sem resultados:** Digitar um texto inexistente (ex.: `teste_inexistente_99`) e checar a mensagem de tabela vazia.
+* **CT19 - Limpar pesquisa:** Apagar o texto da busca e garantir que a lista completa recarregue.
+
+
+
+#### 2.3. Ordenação de Colunas
+
+* **CT20 - Ordenação por Nome:** Clicar nas setinhas do cabeçalho "Nome" e validar a ordenação crescente (A-Z) e decrescente (Z-A).
+
+
+
+#### 2.4. Paginação
+
+* **CT21 - Paginação simples:** Com apenas 1 registro cadastrado, checar o bloqueio/estado visual dos botões `«`, `1` e `»`.
+
+
+* **CT22 - Paginação com múltiplos registros:** Caso existam mais páginas cadastradas, testar cliques nos números e setas de avançar/voltar.
+
+
+
+#### 2.5. Ações por Linha
+
+* **CT23 - Ação Produtos (Ícone Carrinho cinza):** Clicar no carrinho e verificar se redireciona para a lista de produtos com o filtro do mundo selecionado.
+
+
+* **CT24 - Ação Editar (Ícone Lápis amarelo):** Clicar no lápis e conferir se a tela de edição abre com os dados do mundo carregados nos inputs.
+
+
+* **CT25 - Excluir com confirmação (Ícone Lixeira vermelha):** Clicar na lixeira, confirmar a exclusão no modal e checar se o mundo é removido da lista.
+
+
+* **CT26 - Cancelar exclusão:** Clicar na lixeira, clicar em "Cancelar" no modal de confirmação e validar que o item permaneça intocado na tabela.

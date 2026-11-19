@@ -1,0 +1,59 @@
+Aqui está o plano detalhado de casos de teste (CTs) para o módulo de **Opções de Produtos** (`Produtos > Opções / Grupo de opções`), abrangendo a listagem, ordenação/filtros e o formulário de cadastro/edição:
+
+---
+
+### 1. Tela de Listagem: `Produtos > Opções / Grupo de opções`
+
+#### 1.1. Renderização e Dados da Tabela
+
+* **CT01 - Exibição das colunas:** Validar se a grelha apresenta corretamente os cabeçalhos padrão (ex.: "Título/Nome do grupo", "Tipo de seleção", "Obrigatório", "Status", "Itens/Opções associadas" e "Ações").
+* **CT02 - Estado vazio (*Empty state*):** Quando não existirem grupos de opções registados ou uma busca não retornar resultados, validar a exibição da mensagem informativa (ex.: *"Nenhum registro encontrado"*).
+* **CT03 - Tag de filtro ativo:** Garantir a presença do indicador visual de estado dos filtros (ex.: `Sem filtros`).
+
+#### 1.2. Ações de Linha
+
+* **CT04 - Switch de ativação/status:** Alternar o interruptor diretamente na linha da tabela e verificar a mudança de estado (ativo/inativo ou habilitado/desabilitado) do grupo de opções.
+* **CT05 - Ação Editar (Ícone amarelo de lápis):** Clicar no botão de edição e assegurar que o formulário abre com todos os dados e opções pré-carregados.
+* **CT06 - Ação Excluir (Ícone vermelho de caixote do lixo):** Clicar na lixeira, confirmar a operação no modal de confirmação e validar a remoção do grupo da listagem.
+* **CT07 - Reordenação de opções:** Se aplicável, validar o arraste (*drag-and-drop*) ou reordenação visual dos itens na lista.
+
+#### 1.3. Ações Globais e Paginação
+
+* **CT08 - Navegação e Paginação:** Validar a navegação entre páginas (`<`, `>`, números de página) e os totalizadores da tabela.
+* **CT09 - Botão Adicionar (`+`):** Clicar no botão para abrir o formulário de cadastro de um novo grupo/opção.
+
+---
+
+### 2. Modal / Painel de Filtros e Busca
+
+* **CT10 - Abertura e fecho do modal/barra de pesquisa:** Validar a abertura e o cancelamento do filtro.
+* **CT11 - Filtro por Título/Nome do Grupo:** Inserir o nome do grupo e validar se apenas o registro correspondente é exibido na grelha.
+* **CT12 - Filtro por Status:** Filtrar por Ativo/Inativo e validar a listagem correspondente.
+* **CT13 - Limpar filtros:** Validar o retorno da listagem completa ao limpar os parâmetros de busca.
+
+---
+
+### 3. Formulário de Cadastro: `Produtos > Opções > Adicionar / Editar`
+
+#### 3.1. Dados Gerais do Grupo
+
+* **CT14 - Validação de campos obrigatórios (`*`):** Tentar salvar o formulário com campos mandatórios em branco (ex.: "Título*", "Seleção mínima/máxima") e verificar os alertas visuais impeditivos.
+* **CT15 - Preenchimento do campo Título/Nome:** Inserir caracteres normais, limites de tamanho e caracteres especiais.
+* **CT16 - Regras de Seleção Mínima e Máxima:**
+* Validar se o sistema impede que o valor "Mínimo" seja maior que o valor "Máximo".
+* Validar comportamento de escolha única (*radio*) vs múltipla seleção (*checkbox*).
+
+
+* **CT17 - Flag de Obrigatoriedade:** Marcar/desmarcar o indicador que define se a escolha do grupo é obrigatória para o cliente final.
+
+#### 3.2. Gerenciamento de Itens/Opções Internas
+
+* **CT18 - Adicionar nova opção/variação:** Clicar em adicionar item interno e preencher nome da variação (ex.: "Tamanho G", "Adicional de Bacon").
+* **CT19 - Preço adicional / Preço de acréscimo:** Configurar valor monetário adicional para itens específicos e validar se aceita valor zerado ou cobrança extra.
+* **CT20 - Remoção de opção individual:** Remover uma variação específica dentro do grupo antes de salvar.
+* **CT21 - Associação com Produtos:** Selecionar e vincular quais produtos do catálogo utilizarão esse grupo de opções.
+
+#### 3.3. Ações Finais
+
+* **CT22 - Salvar com sucesso:** Gravar o cadastro com todos os dados preenchidos corretamente e validar o redirecionamento com o novo grupo listado.
+* **CT23 - Cancelar cadastro:** Descartar as alterações clicando no botão "Cancelar" e conferir que nada foi salvo.

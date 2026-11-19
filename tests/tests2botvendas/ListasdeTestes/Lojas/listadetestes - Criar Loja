@@ -1,0 +1,129 @@
+Casos de Teste: Cadastro da Loja - Etapa 1: Dados da Empresa
+
+* CT01 - Validação de campos obrigatórios: Clicar em "Salvar e avançar" com os campos em branco e validar a exibição de mensagens de erro nos campos obrigatórios destacados com asterisco.
+
+
+* CT02 - Consulta e preenchimento por CNPJ válido: Inserir um CNPJ válido na máscara, clicar no botão de lupa de busca e checar o preenchimento automático de Razão Social, Nome Fantasia e endereço.
+
+
+* CT03 - Validação de CNPJ inválido: Inserir dígitos incorretos ou CNPJ incompleto e validar a restrição do sistema para consulta e bloqueio do avanço.
+
+
+* CT04 - Autocomplete de endereço via CEP: Inserir um CEP válido no campo correspondente e validar o preenchimento automático dos campos Rua, Bairro, Cidade e UF.
+
+
+* CT05 - Upload de logos em formatos válidos: Realizar o upload de arquivos JPEG ou PNG até 20MB nos campos "Logo retangular" e "Logo quadrada" e validar a exibição no quadro lateral de pré-visualização.
+
+
+* CT06 - Upload de logos inválidas ou acima do limite: Tentar carregar arquivos com formatos não suportados ou tamanho superior a 20MB e validar a mensagem de erro impeditiva.
+
+
+* CT07 - Modal "Ajustar imagem" (Cropper): Testar o recorte das logos (retangular 1000px x 1000px / quadrada 300px x 300px), checkbox "Limitar Borda de corte", "Ajuste Automático", "Trocar imagem", "Remover" e "Salvar".
+
+
+* CT08 - Atualização em tempo real da pré-visualização: Digitar informações em Nome, Nome Fantasia, Razão Social e endereço e verificar o reflexo imediato dos dados no card de pré-visualização à direita.
+
+
+* CT09 - Conclusão da etapa 1: Preencher todos os campos obrigatórios corretamente, clicar em "Salvar e avançar" e checar a transição para a etapa 2 ("Horários e feriados").
+
+
+
+Casos de Teste: Cadastro da Loja - Etapa 2: Horários e Feriados
+
+* CT10 - Alternância de tipo de configuração: Selecionar a opção "Selecionar horário existente" e checar se o formulário oculta os campos de criação e habilita a listagem de horários pré-existentes.
+
+
+* CT11 - Validação de campo obrigatório Nome: Tentar avançar com a opção "Criar novo horário" marcada sem preencher o campo "Nome *" e checar o bloqueio e alerta.
+
+
+* CT12 - Ativação e desativação dos switches de dias da semana: Alternar as chaves dos dias úteis e finais de semana e verificar a liberação dos inputs de horas e a atualização dinâmica na pré-visualização ("Fechado" em vermelho ou intervalos).
+
+
+* CT13 - Validação de máscara e formato de horário: Inserir intervalos fora do formato HH:MM-HH:MM ou com horário final inferior ao horário inicial e checar a validação impeditiva. (é possivel criar um horario com a data inicial menor que a inicial)
+
+
+* CT14 - Cadastro manual de recesso ou feriado: Abrir o modal "Adicionar recesso ou feriado", preencher Nome, Data, horários ("De" e "Até") e clicar no botão verde "Salvar", validando a inclusão do item na listagem de "Recessos e feriados".
+
+
+* CT15 - Validação de campos obrigatórios e limites de caracteres no feriado: Tentar salvar o formulário de recesso/feriado com Nome ou Data em branco e verificar o bloqueio, além de testar o limite máximo de 150 caracteres no campo Nome e 1024 caracteres no campo Mensagem.
+
+
+* CT16 - Formatação e ferramentas do campo Mensagem (Opcional): Inserir texto no campo "Mensagem", testar a inserção de emojis e as formatações de texto (negrito, itálico, riscado, código) e verificar a exibição do tooltip explicativo no ícone ℹ.
+
+
+* CT17 - Opção "Válido para todos os anos": Ativar e desativar o switch "Válido para todos os anos", verificar o tooltip informativo (ℹ) e validar se o feriado salvo recebe a etiqueta/marcação de feriado fixo ("FIXO").
+
+
+* CT18 - Abertura do modal "Sugestões de feriados": Clicar no botão "Sugestões de feriados" dentro do modal de cadastro e verificar a exibição da listagem de feriados nacionais fixos com suas respectivas datas e horários (00:00 às 23:59).
+
+
+* CT19 - Inclusão individual de feriado sugerido: Clicar no botão azul "+" ao lado de um feriado específico na lista de sugestões e validar se o ícone muda para um check verde e o feriado é adicionado à lista principal ao fundo.
+
+
+* CT20 - Ação "Adicionar todas as sugestões": Clicar no botão "Adicionar todas as sugestões" no rodapé do modal e verificar se todos os feriados nacionais são marcados com check verde, adicionados à listagem e se o botão muda para "Remover todas as sugestões".
+
+
+* CT21 - Ação "Remover todas as sugestões": Após adicionar as sugestões, clicar no botão vermelho "Remover todas as sugestões" e validar a remoção em lote dos feriados sugeridos da listagem e o retorno dos ícones ao estado "+".
+
+
+* CT22 - Edição e exclusão na lista de "Recessos e feriados": Na listagem principal da etapa 2, clicar no ícone de lápis (editar) para alterar dados de um feriado cadastrado e no ícone de lixeira (excluir) para remover um item da grade.
+
+
+* CT23 - Pular etapa: Clicar no link "Pular etapa >>" e verificar o avanço direto para a etapa 3 ("Setores") sem salvar horários.
+
+
+* CT24 - Botão "Voltar": Clicar no botão "Voltar" e validar o retorno à etapa 1 ("Dados da Empresa") mantendo as informações digitadas anteriormente salvas.
+
+
+* CT25 - Conclusão da etapa 2: Preencher o nome, configurar a grade de horários/feriados, clicar em "Salvar e avançar" e checar o direcionamento para a etapa 3 ("Setores").
+
+
+
+Casos de Teste: Cadastro da Loja - Etapa 3: Setores
+
+* CT26 - Seleção de múltiplos setores: Marcar os checkboxes dos setores disponíveis (Televendas, Balcão, Financeiro, Logística) e validar o estado visual dos cards marcados.
+
+
+* CT27 - Atualização da tabela de pré-visualização: Marcar e desmarcar setores e checar o reflexo imediato dos itens sendo adicionados ou removidos na tabela do painel lateral.
+
+
+* CT28 - Paginação da pré-visualização: Selecionar setores suficientes para exceder o limite de visualização e testar os botões de navegação de páginas (< 1 >).
+
+
+* CT29 - Link de atalho externo "Setores ↗": Clicar no ícone de redirecionamento ao lado de Setores e checar a abertura da tela correspondente em nova aba ou modal de apoio.
+
+
+* CT30 - Botão "Pular etapa": Clicar no botão "Pular etapa >>" sem definir setores e validar a transição para a etapa 4 ("Timeouts").
+
+
+* CT31 - Botão "Voltar": Clicar em "Voltar" e checar o retorno para a etapa 2 mantendo os setores previamente marcados em tela.
+
+
+* CT32 - Conclusão da etapa 3: Selecionar os setores desejados, clicar em "Salvar e avançar" e verificar a transição para a etapa 4 ("Timeouts").
+
+
+
+Casos de Teste: Cadastro da Loja - Etapa 4: Timeouts
+
+* CT33 - Validação de campo obrigatório Setor de transferência: Tentar avançar com a opção "Selecione o setor" vazia e checar o bloqueio e destaque de obrigatoriedade.
+
+
+* CT34 - Carregamento condicional de setores: Abrir o dropdown "Setor de transferência" e validar se são listados exclusivamente os setores marcados na etapa 3.
+
+
+* CT35 - Validação de inputs numéricos de minutos: Inserir caracteres não numéricos, valores negativos ou nulos nos campos de minutos e verificar se a máscara aceita apenas números válidos.
+
+
+* CT36 - Configuração dos canais de entrada (Chat, Loja Virt., API): Preencher tempos distintos para cada canal de Auto Atendimento > Abandono e verificar o reflexo imediato nos ícones correspondentes do diagrama de fluxo.
+
+
+* CT37 - Tooltips de regras de negócio (ℹ): Clicar ou passar o cursor sobre os ícones ℹ ao lado de cada transição de status e checar a exibição das mensagens orientativas.
+
+
+* CT38 - Diagrama visual dinâmico (Visão geral dos timeouts): Alterar os minutos das transições (Aguardando vendedor, Inatividade, Aguardando cliente, etc.) e validar se o diagrama à direita atualiza as marcações de tempo em tempo real.
+
+
+* CT39 - Botão "Voltar": Clicar em "Voltar" e validar o retorno à etapa 3 mantendo os minutos configurados.
+
+
+* CT40 - Finalização do Cadastro da Loja: Clicar em "Salvar e avançar" com todos os timeouts e setor definidos e checar o salvamento completo com barra de progresso em 100% e redirecionamento.
