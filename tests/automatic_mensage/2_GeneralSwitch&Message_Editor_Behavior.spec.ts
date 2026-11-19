@@ -35,7 +35,7 @@ test('test', async ({ page }) => {
 //   CT08 – Inserting dynamic variables (Add variable +):
   // await page.getByText('Voce acabou de criar o pedido!').click();
   await page.locator('#sale_created_auto_message_fieldset').getByText('Adicionar variável').click();
-  await page.getByText('{first_client_name}').click();
+  await page.locator('.popover').getByText('{first_client_name}', { exact: true }).click();
   await page.getByRole('button', { name: 'Salvar' }).click();
   
 });

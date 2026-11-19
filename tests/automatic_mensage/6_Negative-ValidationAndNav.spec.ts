@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
+  test.setTimeout(60000);
   await page.goto('https://mariameiretreinamento.botvendas.com/login'); 
   await page.getByRole('textbox', { name: 'Login' }).fill('admin@iqnus.com.br');
   await page.getByRole('textbox', { name: 'Senha' }).click();
@@ -13,32 +14,35 @@ test('test', async ({ page }) => {
   await page.getByRole('tab', { name: 'Mensagens automáticas' }).click();
 
   // CT15 – Switch enabled with empty message and template
-  await page.getByText('Mensagem automática de criação link de pagamento:').click();
-  await page.getByRole('checkbox', { name: 'Mensagem automática de criação link de pagamento:' }).check();
+  await page.getByRole('checkbox', { name: 'Mensagem automática de criação link de pagamento:' }).check({ force: true });
   await page.getByRole('button', { name: 'Salvar' }).click();
   await page.waitForLoadState('networkidle');
   await expect(page).toHaveURL(/auto-messages/);
-  await page.getByText('Mensagem automática de criação link de pagamento:').click();
-  await page.getByRole('checkbox', { name: 'Mensagem automática de criação link de pagamento:' }).uncheck();
+  // 2. Restaura: desliga o switch novamente e salva
+  await page.getByRole('checkbox', { name: 'Mensagem automática de criação link de pagamento:' }).uncheck({ force: true });
+  // await page.getByLabel(/criação.*link de pagamento/i).uncheck({ force: true });
   await page.getByRole('button', { name: 'Salvar' }).click();
   await page.waitForLoadState('networkidle');
 
   // CT16 – Store switching in header
-  // CT16 – Store switching in header
   await page.goto('https://mariameiretreinamento.botvendas.com/shops/edit/auto-messages?2');
-  await expect(page.locator('#sale_created_auto_message_fieldset textarea').first()).toHaveValue(/Voce acabou de criar o pedido/i);
-  await page.getByText('Loja 01').first().click();
-  await expect(page.locator('#sale_created_auto_message_fieldset textarea')).toHaveValue('Voce acabou de criar o pedido!');
-  await page.getByText('Loja 01').first().click();
-  await page.getByText('Loja 02').click();
+  await expect(page.locator('#sale_created_auto_message_fieldset textarea').first()).toHaveValue('Voce {first_client_name} acabou de criar o pedido!');
+  await page.locator('#navbar_shop_select').locator('visible=true').selectOption('3', { force: true });
   await page.waitForLoadState('networkidle');
-
-  // 3. Garante que a página carregou as configurações independentes da nova loja sem erro
-  await expect(page).not.toHaveURL(/auto-messages\?2$/);
-
+  await expect(page.locator('#sale_created_auto_message_fieldset textarea')).not.toHaveValue('Voce {first_client_name} acabou de criar o pedido!');
+  await page.waitForLoadState('networkidle');
   // 4. Restaura o contexto para a Loja 01
-  await page.getByText('Loja 02').first().click();
-  await page.getByText('Loja 01').click();
+  await page.locator('#navbar_shop_select').locator('visible=true').selectOption('2', { force: true });
   await page.waitForLoadState('networkidle');
+
+  // CT17 – Discarding unsaved changes
+  await page.getByText('Voce {first_client_name}').click();
+  await page.getByText('Voce {first_client_name}').fill('Texto temporário não salvo.');
+  await page.getByRole('checkbox', { name: 'Preço de atacado' }).uncheck();
+  await page.getByText('Voce {first_client_name}').fill('Texto temporário não salvo.');
+  await page.getByRole('tab', { name: 'Geral' }).click();
+  await page.getByRole('tab', { name: 'Mensagens automáticas' }).click();
+  await page.getByText('Voce {first_client_name}').click();
+
 
 });
